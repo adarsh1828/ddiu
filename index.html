@@ -1,0 +1,4799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Raksha Bandhan to my Sweetest Peru Didi! 🌸</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&family=Sacramento&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS Custom Variables */
+    :root {
+      --bg-gradient: linear-gradient(135deg, #020208 0%, #0d0a1d 50%, #04010a 100%);
+      --pink-soft: rgba(255, 42, 133, 0.15);
+      --pink-accent: #ff2a85;
+      --pink-dark: #b8004f;
+      --purple-soft: rgba(139, 92, 246, 0.15);
+      --purple-accent: #8b5cf6;
+      --gold-solid: #ffd700;
+      --gold-dark: #b59500;
+      --gold-gradient: linear-gradient(135deg, #121020 0%, #201b33 100%);
+      --text-dark: #e9d5ff;
+      --text-muted: #a594c0;
+      --shadow-soft: 0 0 25px rgba(255, 42, 133, 0.15);
+      --shadow-gold: 0 0 25px rgba(255, 215, 0, 0.2);
+      
+      --font-title: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --font-script: 'Dancing Script', cursive;
+      --font-fancy: 'Sacramento', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    button, input, textarea, select {
+      font-family: inherit;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--bg-gradient);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Background Canvas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Gift Wrapper (Pre-entrance) */
+    #gift-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #gift-wrapper.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .gift-box-container {
+      perspective: 1000px;
+      cursor: pointer;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .gift-box-container:hover {
+      transform: scale(1.05);
+    }
+
+    /* Beautiful 3D CSS Gift Box */
+    .gift-box {
+      width: 160px;
+      height: 160px;
+      background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+      position: relative;
+      border-radius: 8px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+      transform-style: preserve-3d;
+      animation: gentle-wobble 3s infinite ease-in-out;
+    }
+
+    .gift-box::before { /* Ribbon Vertical */
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 24px;
+      height: 100%;
+      background: var(--gold-solid);
+      transform: translateX(-50%);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .gift-box::after { /* Ribbon Horizontal */
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 24px;
+      background: var(--gold-solid);
+      transform: translateY(-50%);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .gift-lid {
+      width: 172px;
+      height: 40px;
+      background: #f43f5e;
+      position: absolute;
+      top: -24px;
+      left: -6px;
+      border-radius: 4px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .gift-lid::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 24px;
+      height: 100%;
+      background: var(--gold-solid);
+      transform: translateX(-50%);
+    }
+
+    /* Ribbon Bow */
+    .gift-bow {
+      position: absolute;
+      top: -44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 30px;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bow-loop {
+      width: 32px;
+      height: 32px;
+      border: 6px solid var(--gold-solid);
+      border-radius: 50% 50% 0 50%;
+      transform: rotate(45deg);
+      position: absolute;
+      top: 0;
+    }
+
+    .bow-loop.left {
+      left: 8px;
+      transform: rotate(-135deg);
+    }
+
+    .bow-loop.right {
+      right: 8px;
+      transform: rotate(45deg);
+    }
+
+    .bow-center {
+      width: 14px;
+      height: 14px;
+      background: var(--gold-dark);
+      border-radius: 50%;
+      position: absolute;
+      top: 14px;
+      z-index: 4;
+    }
+
+    @keyframes gentle-wobble {
+      0%, 100% { transform: rotateY(0deg) translateY(0); }
+      25% { transform: rotateY(8deg) translateY(-5px); }
+      75% { transform: rotateY(-8deg) translateY(-2px); }
+    }
+
+    /* Opening Animation */
+    .gift-box-container.opened .gift-lid {
+      transform: translateY(-80px) rotate(-15deg) scale(0.9);
+      opacity: 0;
+    }
+
+    .gift-box-container.opened .gift-box {
+      animation: explode-box 1s forwards;
+    }
+
+    @keyframes explode-box {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); opacity: 0.9; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    .gift-instruction {
+      font-size: 1.1rem;
+      margin-top: 15px;
+      color: rgba(255, 255, 255, 0.7);
+      animation: heartbeat 2s infinite;
+      letter-spacing: 1px;
+    }
+
+    /* Audio Toggle */
+    .audio-control {
+      display: none !important;
+    }
+
+    .audio-control:hover {
+      transform: scale(1.1);
+      background: #fff;
+    }
+
+    .audio-control svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--pink-accent);
+    }
+
+    /* Main Container layout */
+    .main-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .main-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section Styles */
+    section {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 32px 0 rgba(219, 39, 119, 0.06),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px 0 rgba(219, 39, 119, 0.12),
+                  inset 0 0 0 1.5px rgba(255, 255, 255, 0.4);
+      border-color: rgba(219, 39, 119, 0.2);
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      text-align: center;
+      color: #3b0764; /* Deep purple in light mode for readability */
+      margin-bottom: 40px;
+      position: relative;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title::after {
+      content: '🌸';
+      display: block;
+      font-size: 1.2rem;
+      margin-top: 8px;
+      color: var(--gold-solid);
+    }
+
+    /* Make all paragraphs inside white sections dark slate grey for contrast */
+    section p {
+      color: #475569;
+    }
+
+    /* Hero Section */
+    #hero {
+      text-align: center;
+      background: none;
+      border: none;
+      backdrop-filter: none;
+      box-shadow: none;
+      padding: 60px 20px 20px;
+    }
+
+    .rakhi-illustration {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 30px;
+      position: relative;
+      animation: spin-slow 20s infinite linear;
+      filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.3));
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .welcome-subtitle {
+      font-family: var(--font-fancy);
+      font-size: 3.5rem;
+      color: var(--pink-accent);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .welcome-title {
+      font-family: var(--font-title);
+      font-size: 3.2rem;
+      color: var(--text-dark);
+      margin-bottom: 25px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .welcome-title span {
+      font-family: var(--font-script);
+      background: linear-gradient(45deg, var(--pink-accent), var(--purple-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      font-size: 1.1em;
+      font-weight: 700;
+    }
+
+    .welcome-description {
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Countdown Section */
+    #countdown-section {
+      text-align: center;
+      padding: 35px 25px;
+      border: 2px dashed rgba(212, 175, 55, 0.4);
+      background: rgba(255, 251, 242, 0.65);
+    }
+
+    .countdown-subtitle {
+      font-size: 1.1rem;
+      color: var(--gold-dark);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-card {
+      background: rgba(18, 14, 36, 0.6) !important;
+      border: 1px solid rgba(0, 243, 255, 0.2) !important;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.1) !important;
+      border-radius: 16px;
+      padding: 15px;
+      min-width: 90px;
+      transition: transform 0.3s;
+    }
+
+    .countdown-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--pink-accent) !important;
+      box-shadow: 0 0 15px rgba(255, 42, 133, 0.25) !important;
+    }
+
+    .countdown-value {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .countdown-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .countdown-passed-message {
+      font-family: var(--font-script);
+      font-size: 2.5rem;
+      color: var(--pink-accent);
+      display: none;
+      animation: pulse-light 2.5s infinite;
+    }
+
+    /* Childhood Memories Gallery */
+    .polaroid-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      margin-top: 20px;
+      perspective: 1000px;
+    }
+
+    .polaroid-card {
+      background: rgba(26, 21, 48, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 14px 14px 24px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 243, 255, 0.15);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 250px;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+    }
+
+    /* Cyber LED Pin element */
+    .polaroid-card::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #00f3ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
+      z-index: 5;
+      transition: all 0.3s;
+    }
+    .polaroid-card:hover::before {
+      background: #ff2a85;
+      box-shadow: 0 0 10px #ff2a85, 0 0 20px #ff2a85;
+    }
+
+    /* Holographic Tape effect */
+    .polaroid-card::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 60px;
+      height: 12px;
+      background: rgba(0, 243, 255, 0.25);
+      border: 1px solid rgba(0, 243, 255, 0.4);
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
+      z-index: 4;
+    }
+
+    .polaroid-img-wrapper {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #110e25;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 6px;
+    }
+
+    .polaroid-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .polaroid-card:hover .polaroid-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .polaroid-placeholder-svg {
+      width: 45%;
+      height: 45%;
+      fill: var(--text-muted);
+      opacity: 0.35;
+    }
+
+    .polaroid-caption {
+      margin-top: 15px;
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 1.65rem;
+      text-align: center;
+      color: var(--text-dark);
+      word-wrap: break-word;
+      line-height: 1.25;
+      transition: color 0.3s;
+    }
+
+    /* Rotations for natural messy look */
+    .polaroid-card:nth-child(odd) {
+      transform: rotate(-3deg);
+    }
+    .polaroid-card:nth-child(even) {
+      transform: rotate(3deg);
+    }
+    .polaroid-card:nth-child(3n) {
+      transform: rotate(-1.5deg);
+    }
+
+    .polaroid-card:hover {
+      transform: rotate(0deg) scale(1.06) translateY(-10px);
+      z-index: 10;
+      box-shadow: 0 20px 40px rgba(255, 42, 133, 0.25);
+      border-color: var(--pink-accent);
+    }
+
+    /* Timeline Section */
+    .timeline-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    /* Center line */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: linear-gradient(to bottom, #00f3ff, #ff2a85, #8b5cf6);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .timeline-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    /* Node dots */
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      right: -8px;
+      top: 17px;
+      border-radius: 50%;
+      background: #020208;
+      border: 3px solid #00f3ff;
+      z-index: 1;
+      box-shadow: 0 0 8px #00f3ff;
+      transition: all 0.3s;
+    }
+
+    .timeline-item.right::after {
+      left: -8px;
+      right: auto;
+    }
+
+    .timeline-item:hover::after {
+      background: #ff2a85;
+      border-color: #ff2a85;
+      box-shadow: 0 0 15px #ff2a85;
+    }
+
+    .timeline-badge {
+      font-size: 0.85rem;
+      background: linear-gradient(135deg, var(--gold-solid), var(--gold-dark));
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 8px;
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .timeline-card {
+      background: rgba(20, 16, 38, 0.7);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--pink-accent);
+      box-shadow: 0 8px 24px rgba(255, 42, 133, 0.15);
+    }
+
+    .timeline-title {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* 3D Envelope Letter Section */
+    #envelope-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .envelope-interactive-container {
+      width: 100%;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    /* 3D Envelope Styling */
+    .envelope-wrapper {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      background-color: #fbcfe8;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 15px 45px rgba(219, 39, 119, 0.15);
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      z-index: 2;
+    }
+
+    .envelope-wrapper:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Flap */
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-top: 110px solid #ec4899;
+      transform-origin: top;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 4;
+    }
+
+    /* Envelope Pocket sides */
+    .envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #fbcfe8 0%, #f472b6 100%);
+      border-radius: 0 0 16px 16px;
+      z-index: 3;
+      clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 50% 50%, 0% 0%);
+    }
+
+    /* Outer front card */
+    .envelope-front-tag {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      background: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-family: var(--font-script);
+      font-size: 1.3rem;
+      color: var(--pink-accent);
+      border: 1px solid var(--pink-soft);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      z-index: 5;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    /* Letter inside */
+    .envelope-letter-preview {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      height: 180px;
+      background: linear-gradient(135deg, #fffcf9 0%, #fcf0da 100%);
+      border: 1px solid var(--gold-solid);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transform: translateY(0);
+      transition: transform 0.5s ease;
+      z-index: 1;
+    }
+
+    .envelope-letter-preview h4 {
+      font-family: var(--font-script);
+      font-size: 1.4rem;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+
+    .envelope-letter-preview p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+    }
+
+    /* Envelope Opened State */
+    .envelope-wrapper.opened .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 0;
+    }
+
+    .envelope-wrapper.opened .envelope-letter-preview {
+      transform: translateY(-130px);
+      z-index: 3;
+    }
+
+    .envelope-wrapper.opened .envelope-front-tag {
+      opacity: 0;
+    }
+
+    /* Fullscreen Modal Letter */
+    .letter-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(45, 26, 71, 0.6);
+      backdrop-filter: blur(10px);
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      padding: 20px;
+    }
+
+    .letter-modal.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .letter-paper {
+      background: linear-gradient(135deg, #fffcf8 0%, #f7ecd7 100%);
+      border: 8px double var(--gold-solid);
+      border-radius: 4px;
+      max-width: 580px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 40px 35px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+      position: relative;
+      transform: scale(0.9) rotate(-1deg);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .letter-modal.visible .letter-paper {
+      transform: scale(1) rotate(0deg);
+    }
+
+    /* Decorative wax seal close button */
+    .wax-seal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: radial-gradient(circle, #b91c1c 40%, #991b1b 80%);
+      border: 2px solid var(--gold-solid);
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 0 5px rgba(255,255,255,0.2);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      transition: transform 0.3s;
+      z-index: 10;
+    }
+
+    .wax-seal-close:hover {
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    .letter-header {
+      font-family: var(--font-script);
+      font-size: 2.6rem;
+      color: #b91c1c; /* Crimson wax seal red */
+      margin-bottom: 25px;
+      border-bottom: 1px dashed rgba(185, 28, 28, 0.2);
+      padding-bottom: 5px;
+    }
+
+    .letter-body {
+      font-family: var(--font-script);
+      font-size: 1.85rem;
+      color: #2e1065; /* Deep midnight-violet ink for contrast and readability */
+      line-height: 1.65;
+      text-align: left;
+      white-space: pre-wrap;
+      font-weight: 600;
+    }
+
+    .letter-signature {
+      margin-top: 30px;
+      text-align: right;
+      font-family: var(--font-script);
+      font-size: 2.3rem;
+      color: #b91c1c; /* Crimson ink */
+    }
+
+    /* Virtual Aarti Puja Thali Section */
+    .puja-interactive-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .puja-instruction {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-align: center;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1px dashed var(--pink-soft);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+    }
+
+    /* Interactive Sibling Portrait */
+    .portrait-frame {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 6px double var(--gold-solid);
+      background: #fff;
+      position: relative;
+      box-shadow: var(--shadow-gold), 0 0 0 8px rgba(255,255,255,0.5);
+      cursor: crosshair;
+      overflow: visible;
+      transition: transform 0.3s;
+    }
+
+    .portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 50%;
+    }
+
+    /* Draw Tilak on Portrait */
+    .portrait-tilak {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 12px;
+      height: 28px;
+      background: radial-gradient(ellipse at center, #dc2626 50%, #991b1b 100%);
+      border-radius: 30% 30% 50% 50%;
+      box-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+      z-index: 10;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Yellow Rice Grains on Tilak */
+    .portrait-chawal {
+      position: absolute;
+      top: 40%;
+      left: 51%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 18px;
+      height: 18px;
+      background-image: 
+        radial-gradient(circle, #fef08a 3px, transparent 4px),
+        radial-gradient(circle, #fef08a 2.5px, transparent 3px);
+      background-position: 0 0, 8px 8px;
+      background-repeat: no-repeat;
+      z-index: 11;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;
+    }
+
+    .portrait-tilak.applied,
+    .portrait-chawal.applied {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Sweets Bite Animation */
+    .sweet-feed-effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 3rem;
+      z-index: 12;
+      pointer-events: none;
+      transition: transform 0.4s ease;
+    }
+
+    /* The Thali/Plate */
+    .puja-thali {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, #fef9c3 30%, #fde047 70%, #ca8a04 100%);
+      border: 12px double #eab308;
+      border-radius: 50%;
+      box-shadow: 0 15px 45px rgba(202, 138, 4, 0.25), inset 0 0 40px rgba(0,0,0,0.15);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Diya */
+    .thali-diya {
+      position: absolute;
+      top: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 70px;
+      cursor: grab;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .diya-base {
+      width: 60px;
+      height: 35px;
+      background: radial-gradient(ellipse at bottom, #b45309 60%, #78350f 100%);
+      border-radius: 0 0 60px 60px;
+      border-top: 3px solid #f59e0b;
+      position: relative;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    }
+
+    .diya-flame {
+      width: 16px;
+      height: 32px;
+      background: linear-gradient(to top, #ea580c 20%, #f97316 40%, #facc15 80%, #fff 100%);
+      border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+      animation: flame-flicker 1.5s infinite alternate ease-in-out;
+      box-shadow: 0 -4px 20px #f97316, 0 0 40px #facc15;
+      transform-origin: bottom center;
+    }
+
+    @keyframes flame-flicker {
+      0% { transform: scale(1) rotate(-1deg); }
+      100% { transform: scale(1.1) rotate(2deg); opacity: 0.95; }
+    }
+
+    /* Sweet Bowl */
+    .thali-sweet-bowl {
+      position: absolute;
+      bottom: 45px;
+      left: 55px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .sweet-bowl-base {
+      width: 76px;
+      height: 30px;
+      background: #e2e8f0;
+      border: 2px solid #cbd5e1;
+      border-radius: 0 0 40px 40px;
+      position: absolute;
+      bottom: 5px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    .ladoo {
+      width: 26px;
+      height: 26px;
+      background: radial-gradient(circle at 30% 30%, #fef08a, #eab308, #ca8a04);
+      border-radius: 50%;
+      position: absolute;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+
+    .ladoo.l1 { bottom: 25px; left: 16px; }
+    .ladoo.l2 { bottom: 25px; left: 38px; }
+    .ladoo.l3 { bottom: 38px; left: 27px; }
+
+    .ladoo:hover {
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    /* Roli/Tilak Bowl */
+    .thali-roli-bowl {
+      position: absolute;
+      bottom: 45px;
+      right: 55px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .roli-paste {
+      width: 32px;
+      height: 32px;
+      background: radial-gradient(circle, #dc2626 60%, #991b1b 100%);
+      border-radius: 50%;
+      position: absolute;
+      bottom: 22px;
+      left: 14px;
+      border: 1px solid #7f1d1d;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    .chawal-grains {
+      width: 32px;
+      height: 32px;
+      background: #fef08a;
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+      border-radius: 50%;
+      position: absolute;
+      bottom: 22px;
+      right: 14px;
+      border: 1px solid #eab308;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .bowl-base {
+      width: 76px;
+      height: 25px;
+      background: #cbd5e1;
+      border-radius: 0 0 40px 40px;
+      position: absolute;
+      bottom: 5px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      border: 1px solid #94a3b8;
+    }
+
+    /* Sweet/Diya Following cursor */
+    .floating-tool {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%) scale(1.2);
+      display: none;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+    }
+
+    .floating-tool.active {
+      display: block;
+    }
+
+    /* Puja reset button */
+    .reset-puja-btn {
+      background: linear-gradient(135deg, var(--pink-accent), var(--purple-accent));
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(219,39,119,0.25);
+      transition: all 0.3s;
+      margin-top: 15px;
+    }
+
+    .reset-puja-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(219,39,119,0.35);
+    }
+
+    /* Final Message Section */
+    #closing-section {
+      text-align: center;
+      padding: 50px 30px;
+      background: linear-gradient(135deg, rgba(253, 242, 248, 0.7) 0%, rgba(245, 243, 255, 0.7) 100%);
+      border: 2px solid rgba(219, 39, 119, 0.15);
+    }
+
+    .closing-wishes {
+      font-family: var(--font-title);
+      font-size: 2.4rem;
+      background: linear-gradient(45deg, #db2777, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .closing-text {
+      font-size: 1.1rem;
+      color: #3b0764; /* Deep purple for readability on light background */
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    .closing-sign {
+      font-family: var(--font-script);
+      font-size: 2.4rem;
+      color: #db2777; /* Rich pink for contrast in light mode */
+      margin-top: 15px;
+      font-weight: 700;
+    }
+
+    /* Personalizer Panel / Sidebar Modal */
+    #editor-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 999;
+      background: #fff;
+      border: 1px solid var(--purple-soft);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      width: 44px;
+      height: 44px;
+      transition: all 0.3s;
+    }
+
+    #editor-toggle:hover {
+      transform: rotate(45deg) scale(1.1);
+    }
+
+    #editor-toggle svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--purple-accent);
+    }
+
+    .editor-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 10001;
+      display: flex;
+      justify-content: flex-end;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .editor-modal.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .editor-panel {
+      width: 100%;
+      max-width: 460px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 30px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .editor-modal.visible .editor-panel {
+      transform: translateX(0);
+    }
+
+    .editor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #f3f4f6;
+      padding-bottom: 15px;
+    }
+
+    .editor-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #3b0764; /* Deep purple in light mode */
+    }
+
+    .editor-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #4b5563; /* Dark slate grey */
+      cursor: pointer;
+    }
+
+    .editor-group {
+      margin-bottom: 20px;
+    }
+
+    .editor-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1f2937; /* Dark grey label */
+      margin-bottom: 6px;
+    }
+
+    .editor-input,
+    .editor-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: #110e2e; /* Dark input text */
+      background: #fdfdfd;
+      transition: border 0.3s;
+    }
+
+    .editor-input:focus,
+    .editor-textarea:focus {
+      outline: none;
+      border-color: var(--purple-accent);
+    }
+
+    .editor-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .editor-help {
+      font-size: 0.75rem;
+      color: #6b7280; /* Dark slate grey */
+      margin-top: 4px;
+    }
+
+    .editor-save-btn {
+      background: var(--purple-accent);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .editor-save-btn:hover {
+      background: #6d28d9;
+    }
+
+    .editor-download-btn {
+      background: var(--gold-solid);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 12px;
+      transition: background 0.3s;
+    }
+
+    .editor-download-btn:hover {
+      background: var(--gold-dark);
+    }
+
+    /* Subsections in editor */
+    .editor-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--pink-accent);
+      margin: 25px 0 15px;
+      padding-top: 15px;
+      border-top: 1px dashed #e5e7eb;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .main-content {
+        gap: 60px;
+        padding: 20px 15px;
+      }
+      section {
+        padding: 30px 20px;
+        border-radius: 18px;
+      }
+      .welcome-subtitle {
+        font-size: 2.8rem;
+      }
+      .welcome-title {
+        font-size: 2.2rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .timeline-container::before {
+        left: 20px;
+      }
+      .timeline-item {
+        width: 100%;
+        padding-left: 45px;
+        padding-right: 0;
+      }
+      .timeline-item.left {
+        text-align: left;
+      }
+      .timeline-item.left::after,
+      .timeline-item.right::after {
+        left: 10px;
+      }
+      .timeline-item.right {
+        left: 0%;
+      }
+      .puja-thali {
+        width: 290px;
+        height: 290px;
+        border-width: 8px;
+      }
+      .thali-sweet-bowl {
+        bottom: 35px;
+        left: 40px;
+      }
+      .thali-roli-bowl {
+        bottom: 35px;
+        right: 40px;
+      }
+      .letter-paper {
+        padding: 30px 20px;
+      }
+      .letter-body {
+        font-size: 1.4rem;
+      }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* ----------------------------------------------------
+       Screen State Controllers & Login Gating Styling
+       ---------------------------------------------------- */
+    .app-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+      padding: 20px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    #teaser-screen {
+      background: linear-gradient(135deg, #2d133c 0%, #1e1135 100%);
+      color: #fff;
+      display: none; /* Managed by JS */
+    }
+
+    .glass-card-teaser {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      padding: 45px 35px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .glass-card-teaser::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      padding: 1px;
+      background: linear-gradient(to bottom right, rgba(212,175,55,0.4), rgba(219,39,119,0.2), rgba(255,255,255,0.1));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .login-container-card {
+      background: rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      padding: 30px 24px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 25px 55px rgba(0,0,0,0.35);
+      position: relative;
+      transition: transform 0.4s ease;
+      margin-top: 25px;
+    }
+
+    .login-container-card.shake,
+    .login-card-3d-wrapper.shake {
+      animation: card-shake 0.5s ease-in-out;
+    }
+
+    @keyframes card-shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .login-title {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .login-subtitle {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .login-input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .login-input-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--pink-soft);
+      margin-bottom: 6px;
+      display: block;
+      font-weight: 600;
+    }
+
+    .login-field {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .login-field:focus {
+      outline: none;
+      border-color: var(--gold-solid);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+    }
+
+
+    .login-btn {
+      background: linear-gradient(135deg, var(--pink-accent) 0%, #be185d 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(219, 39, 119, 0.2);
+      transition: all 0.3s;
+      margin-top: 8px;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(219, 39, 119, 0.35);
+      background: linear-gradient(135deg, #ec4899 0%, var(--pink-accent) 100%);
+    }
+
+    .login-error-msg {
+      font-size: 0.82rem;
+      color: #fca5a5;
+      margin-top: 12px;
+      display: none;
+      line-height: 1.4;
+    }
+
+    /* Teaser Countdown styles */
+    .teaser-title {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      margin-bottom: 12px;
+      background: linear-gradient(45deg, #fff, var(--pink-soft));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .teaser-msg {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .teaser-gift-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      animation: float-slow 4s infinite ease-in-out;
+      display: inline-block;
+    }
+
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse-light {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.65; }
+    }
+
+    @keyframes scaleIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      80% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    /* Tab buttons styling */
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.6);
+      color: #311042; /* Dark purple in light mode */
+      border: 1px solid rgba(219, 39, 119, 0.25);
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 0.88rem;
+      font-family: var(--font-body);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .tab-btn:hover {
+      background: rgba(219, 39, 119, 0.08);
+      transform: translateY(-1px);
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--pink-accent) 0%, #be185d 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25);
+    }
+
+    /* 3D Gift Box Styling */
+    .gift-box-3d {
+      width: 130px;
+      height: 130px;
+      position: relative;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      animation: float-slow 3s infinite ease-in-out;
+      transition: all 0.5s ease;
+      margin: 20px 0;
+    }
+    .gift-box-3d:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+    .gift-box-3d.opening {
+      animation: shake-fast 0.5s infinite !important;
+    }
+    .gift-body {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(13, 10, 29, 0.7);
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255, 42, 133, 0.4), inset 0 0 15px rgba(255, 42, 133, 0.3);
+      border: 2px solid #ff2a85;
+      top: 0;
+      left: 0;
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .gift-box-3d.opening .gift-body {
+      transform: scale(0.1) rotate(45deg);
+      opacity: 0;
+      filter: blur(5px);
+    }
+    .gift-lid {
+      position: absolute;
+      width: 110%;
+      height: 28px;
+      top: -20px;
+      left: -5%;
+      background: rgba(13, 10, 29, 0.85);
+      border: 2px solid #00f3ff;
+      border-radius: 6px;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+      z-index: 5;
+      transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .gift-box-3d.opening .gift-lid {
+      transform: translateY(-180px) rotateX(45deg) rotateY(180deg) scale(0.6);
+      opacity: 0;
+    }
+    .gift-ribbon-horizontal {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 16px;
+      background: linear-gradient(90deg, rgba(0,243,255,0.4) 0%, #00f3ff 50%, rgba(0,243,255,0.4) 100%);
+      box-shadow: 0 0 10px #00f3ff;
+      z-index: 2;
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .gift-box-3d.opening .gift-ribbon-horizontal {
+      transform: translateY(-50%) scaleX(0);
+      opacity: 0;
+    }
+    .gift-ribbon-vertical {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0,243,255,0.4) 0%, #00f3ff 50%, rgba(0,243,255,0.4) 100%);
+      box-shadow: 0 0 10px #00f3ff;
+      z-index: 2;
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .gift-box-3d.opening .gift-ribbon-vertical {
+      transform: translateX(-50%) scaleY(0);
+      opacity: 0;
+    }
+    .gift-bow {
+      position: absolute;
+      top: -38px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 25px;
+      z-index: 6;
+      transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .gift-bow::before, .gift-bow::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border: 4px solid #00f3ff;
+      border-radius: 50% 50% 0 50%;
+      transform: rotate(-45deg);
+      top: 0;
+      box-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+    }
+    .gift-bow::after {
+      left: 18px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(45deg);
+    }
+    .gift-box-3d.opening .gift-bow {
+      transform: translateY(-220px) rotate(120deg) scale(0);
+      opacity: 0;
+    }
+    
+    @keyframes shake-fast {
+      0%, 100% { transform: translate(0, 0) rotate(0); }
+      20% { transform: translate(-3px, 2px) rotate(-3deg); }
+      40% { transform: translate(3px, -2px) rotate(3deg); }
+      60% { transform: translate(-3px, -2px) rotate(-1.5deg); }
+      80% { transform: translate(3px, 2px) rotate(1.5deg); }
+    }
+
+    /* Wax Seal Envelope Styling */
+    .wax-seal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      background: radial-gradient(circle, #ef4444 0%, #b91c1c 100%);
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35), inset 0 2px 4px rgba(255,255,255,0.4);
+      cursor: pointer;
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fef08a;
+      font-size: 1.4rem;
+      border: 3px solid #7f1d1d;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    .wax-seal::after {
+      content: '★';
+    }
+    .wax-seal.broken {
+      transform: translate(-50%, -50%) scale(0.1);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Royal Certificate Styling */
+    #certificate-section {
+      padding: 50px 20px;
+      background: rgba(13, 10, 29, 0.45);
+      backdrop-filter: blur(25px);
+      border-radius: 20px;
+      border: 1px solid rgba(0, 243, 255, 0.15);
+      margin: 40px auto;
+      max-width: 760px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    }
+    .scroll-container {
+      perspective: 1000px;
+      width: 100%;
+    }
+    .certificate-scroll {
+      background: rgba(20, 16, 38, 0.85);
+      border: 6px double #00f3ff;
+      border-radius: 8px;
+      padding: 30px 20px;
+      position: relative;
+      box-shadow: 0 0 25px rgba(0, 243, 255, 0.15), inset 0 0 15px rgba(0, 243, 255, 0.05);
+      transform: rotateX(1deg);
+      transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .certificate-scroll:hover {
+      box-shadow: 0 0 35px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    .certificate-inner-border {
+      border: 1px dashed rgba(255, 42, 133, 0.4);
+      padding: 35px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .certificate-seal {
+      width: 55px;
+      height: 55px;
+      background: radial-gradient(circle, #00f3ff 0%, #008eb4 100%);
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+      margin-bottom: 20px;
+    }
+    .certificate-header {
+      font-family: var(--font-title);
+      font-size: 2.1rem;
+      color: #00f3ff;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+      margin-bottom: 8px;
+      font-style: italic;
+      font-weight: 700;
+    }
+    .certificate-subtext {
+      font-size: 0.85rem;
+      color: #ffd700;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+    .certificate-name {
+      font-family: var(--font-script);
+      font-size: 3.2rem;
+      color: #ff2a85;
+      text-shadow: 0 0 12px rgba(255, 42, 133, 0.5);
+      margin: 8px 0;
+      border-bottom: 2px solid rgba(255, 42, 133, 0.3);
+      padding-bottom: 5px;
+      min-width: 250px;
+    }
+    .certificate-reason {
+      font-size: 0.98rem;
+      color: #e9d5ff;
+      line-height: 1.65;
+      max-width: 580px;
+      margin: 15px 0 30px;
+      font-family: var(--font-body);
+    }
+    .certificate-footer {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 520px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-sign, .footer-date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top: 1px solid rgba(0, 243, 255, 0.4);
+      width: 180px;
+      padding-top: 8px;
+      margin: 0 auto;
+    }
+    .sign-title {
+      font-size: 0.7rem;
+      color: #ffd700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .sign-value {
+      font-family: var(--font-script);
+      font-size: 1.4rem;
+      color: #00f3ff;
+      font-weight: 700;
+    }
+    .cert-btn {
+      background: linear-gradient(135deg, var(--pink-accent) 0%, var(--purple-accent) 100%);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 24px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 42, 133, 0.3);
+      transition: all 0.3s ease;
+    }
+    .cert-btn:hover {
+      box-shadow: 0 6px 20px rgba(255, 42, 133, 0.5);
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    /* Sibling Promises Checklist Section */
+    .promises-container {
+      max-width: 650px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .promise-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(219, 39, 119, 0.15);
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02), inset 0 0 10px rgba(255,255,255,0.8);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    
+    .promise-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--pink-accent);
+      box-shadow: 0 8px 25px rgba(255, 42, 133, 0.12);
+    }
+    
+    .promise-checkbox {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink-accent) 0%, var(--purple-accent) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(255, 42, 133, 0.3);
+      flex-shrink: 0;
+      animation: pulse-light 2.5s infinite;
+    }
+    
+    .promise-check-icon {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    
+    .promise-content {
+      text-align: left;
+    }
+    
+    .promise-title {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: #4a044e; /* Deep purple in light mode for readability */
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .promise-description {
+      font-size: 0.88rem;
+      color: #475569; /* Slate grey in light mode */
+      line-height: 1.45;
+    }
+
+    /* Circular Countdown Progress Rings CSS */
+    .countdown-ring-card {
+      position: relative;
+      width: 84px;
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .countdown-progress-svg {
+      width: 84px;
+      height: 84px;
+      transform: rotate(-90deg);
+    }
+    
+    .ring-track {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 4px;
+    }
+    
+    .ring-fill {
+      fill: none;
+      stroke: url(#ring-gradient);
+      stroke-width: 4px;
+      stroke-linecap: round;
+      stroke-dasharray: 226;
+      stroke-dashoffset: 226;
+      transition: stroke-dashoffset 0.5s ease;
+    }
+
+    .ring-text-container {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .ring-text-container .countdown-value {
+      font-size: 1.5rem !important;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .ring-text-container .countdown-label {
+      font-size: 0.6rem !important;
+      margin-top: 0 !important;
+      color: rgba(255,255,255,0.6) !important;
+    }
+
+    /* 3D Card Flip CSS */
+    .login-card-3d-wrapper {
+      perspective: 1000px;
+      width: 100%;
+      max-width: 440px;
+      height: 330px; /* fixed height for 3D container */
+      position: relative;
+      margin-top: 15px;
+    }
+    
+    .login-card-3d-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .login-card-3d-inner .login-container-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin-top: 0 !important;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      background: rgba(20, 16, 38, 0.95) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .login-card-3d-inner .card-front {
+      transform: rotateY(0deg);
+      pointer-events: auto;
+    }
+    
+    .login-card-3d-inner.flipped .card-front {
+      transform: rotateY(-180deg);
+      pointer-events: none;
+    }
+    
+    .login-card-3d-inner .card-back {
+      transform: rotateY(180deg);
+      pointer-events: none;
+    }
+    
+    .login-card-3d-inner.flipped .card-back {
+      transform: rotateY(0deg);
+      pointer-events: auto;
+    }
+
+    /* =============================================
+       LOADING SCREEN
+    ============================================= */
+    #loading-screen {
+      position: fixed; inset: 0;
+      background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #831843 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-rakhi {
+      width: 90px; height: 90px;
+      border: 4px solid rgba(212,175,55,0.25);
+      border-top: 4px solid #d4af37;
+      border-radius: 50%;
+      animation: spin 1.2s linear infinite;
+      margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .loader-rakhi-inner { 
+      font-size: 2.6rem; 
+      position: absolute; 
+      animation: spin-reverse 3s linear infinite; 
+      display: inline-block;
+    }
+    .loader-text {
+      font-family: var(--font-script);
+      font-size: 1.8rem; color: #fde8f3;
+      animation: pulse-light 1.5s infinite;
+    }
+    .loader-subtext {
+      font-size: 0.85rem; color: rgba(255,255,255,0.5);
+      margin-top: 6px; letter-spacing: 1px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes spin-reverse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    /* Staggered entrance animations (little by little) for opening page */
+    .teaser-gift-icon,
+    .teaser-title,
+    .teaser-msg,
+    .countdown-container,
+    .login-container-card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #login-screen.entrance-active .teaser-gift-icon {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 150ms;
+    }
+    #login-screen.entrance-active .teaser-title {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 300ms;
+    }
+    #login-screen.entrance-active .teaser-msg {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 450ms;
+    }
+    #login-screen.entrance-active .countdown-container {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 600ms;
+    }
+    #login-screen.entrance-active .login-container-card {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 750ms;
+    }
+
+    /* =============================================
+       DARK MODE
+    ============================================= */
+    body.dark-mode {
+      background: linear-gradient(135deg, #0d0a1a 0%, #1a0d2e 50%, #0d1a2e 100%) !important;
+      color: #f0e6ff;
+    }
+    body.dark-mode .main-content > section {
+      background: rgba(26, 21, 44, 0.45) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+    }
+    body.dark-mode .main-content > section:hover {
+      border-color: rgba(124, 58, 237, 0.3) !important;
+      box-shadow: 0 16px 48px 0 rgba(124, 58, 237, 0.15),
+                  inset 0 0 0 1.5px rgba(255, 255, 255, 0.1) !important;
+    }
+    body.dark-mode .polaroid-card { background: #1e1535; }
+    body.dark-mode .polaroid-caption { color: #e0c8ff; }
+    body.dark-mode .countdown-card { background: #1e1535; border-color: rgba(212,175,55,0.3); }
+    body.dark-mode .countdown-value, body.dark-mode .countdown-label { color: #f0e6ff; }
+    body.dark-mode .timeline-card { background: #1e1535 !important; }
+    body.dark-mode .certificate-scroll { background: #1e1535 !important; }
+    body.dark-mode .section-title { color: #f0e6ff !important; }
+    body.dark-mode .welcome-title { color: #f0e6ff; }
+    body.dark-mode .welcome-description { color: #c4b5d8; }
+    body.dark-mode .envelope-wrapper { background: #2d1a47; }
+    
+    /* Dark mode section overrides */
+    body.dark-mode section p {
+      color: #c4b5d8 !important;
+    }
+    body.dark-mode .tab-btn {
+      color: #f0e6ff !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    body.dark-mode .tab-btn.active {
+      color: #fff !important;
+      background: linear-gradient(135deg, var(--pink-accent) 0%, #be185d 100%) !important;
+    }
+
+    /* Dark mode editor panel overrides */
+    body.dark-mode .editor-panel {
+      background: #110e25 !important;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5) !important;
+    }
+    body.dark-mode .editor-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    body.dark-mode .editor-title {
+      color: #f0e6ff !important;
+    }
+    body.dark-mode .editor-close {
+      color: #a594c0 !important;
+    }
+    body.dark-mode .editor-label {
+      color: #c4b5d8 !important;
+    }
+    body.dark-mode .editor-input,
+    body.dark-mode .editor-textarea {
+      color: #f0e6ff !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    body.dark-mode .editor-help {
+      color: #a594c0 !important;
+    }
+
+    /* Dark mode closing section style overrides */
+    body.dark-mode .closing-wishes {
+      background: linear-gradient(45deg, var(--pink-accent), var(--purple-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    body.dark-mode .closing-text {
+      color: #c4b5d8 !important;
+    }
+    body.dark-mode .closing-sign {
+      color: var(--gold-solid) !important;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+    body.dark-mode .promise-item {
+      background: rgba(26, 21, 44, 0.45) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    }
+    body.dark-mode .promise-item:hover {
+      border-color: var(--pink-accent) !important;
+      box-shadow: 0 8px 25px rgba(255, 42, 133, 0.25) !important;
+    }
+    body.dark-mode .promise-title {
+      color: var(--gold-solid) !important;
+    }
+    body.dark-mode .promise-description {
+      color: #c4b5d8 !important;
+    }
+    #dark-toggle-btn {
+      position: fixed; bottom: 80px; right: 20px;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
+      border: 2px solid rgba(255,255,255,0.15);
+      color: #fff; font-size: 1.3rem;
+      cursor: pointer; z-index: 200;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #dark-toggle-btn:hover { transform: scale(1.1) rotate(20deg); }
+
+    /* =============================================
+       LIGHTBOX PHOTO VIEWER
+    ============================================= */
+    #lightbox-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.94);
+      z-index: 5000;
+      display: none; align-items: center; justify-content: center;
+      flex-direction: column; padding: 20px;
+    }
+    #lightbox-overlay.active { display: flex; animation: scaleIn 0.25s ease-out; }
+    #lightbox-img {
+      max-width: 90vw; max-height: 72vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      object-fit: contain;
+    }
+    #lightbox-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem; color: #fde8f3;
+      margin-top: 14px; text-align: center;
+      max-width: 580px; line-height: 1.3;
+    }
+    #lightbox-close {
+      position: absolute; top: 18px; right: 22px;
+      font-size: 1.5rem; color: #fff; cursor: pointer;
+      background: rgba(255,255,255,0.15);
+      border: none; border-radius: 50%;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    #lightbox-close:hover { background: rgba(219,39,119,0.6); }
+    #lightbox-prev, #lightbox-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: none; color: #fff; font-size: 1.6rem;
+      width: 48px; height: 48px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    #lightbox-prev { left: 12px; }
+    #lightbox-next { right: 12px; }
+    #lightbox-prev:hover, #lightbox-next:hover { background: rgba(219,39,119,0.5); transform: translateY(-50%) scale(1.1); }
+    #lightbox-counter {
+      position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+      font-size: 0.85rem; color: rgba(255,255,255,0.65);
+      background: rgba(0,0,0,0.5); padding: 4px 14px; border-radius: 20px;
+    }
+
+    /* =============================================
+       SCROLL REVEAL ANIMATIONS
+    ============================================= */
+    .scroll-reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+
+    /* =============================================
+       CONFETTI CANVAS
+    ============================================= */
+    #confetti-canvas {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      z-index: 4998; pointer-events: none;
+    }
+
+    /* =============================================
+       TYPING CURSOR
+    ============================================= */
+    .typing-cursor {
+      display: inline-block;
+      width: 3px; height: 0.85em;
+      background: var(--pink-accent);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink-cursor 0.8s step-end infinite;
+    }
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* =============================================
+       SHARE BUTTON & TOAST
+    ============================================= */
+    #share-btn {
+      position: fixed; bottom: 133px; right: 20px;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink-accent) 0%, var(--purple-accent) 100%);
+      border: none; color: #fff; font-size: 1.2rem;
+      cursor: pointer; z-index: 200;
+      box-shadow: 0 4px 15px rgba(219,39,119,0.4);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #share-btn:hover { transform: scale(1.15); box-shadow: 0 6px 20px rgba(219,39,119,0.6); }
+    #share-toast {
+      position: fixed; bottom: 186px; right: 10px;
+      background: #1e1535; color: #fff;
+      padding: 9px 16px; border-radius: 16px;
+      font-size: 0.82rem; font-weight: 600;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease; z-index: 201;
+      white-space: nowrap; border: 1px solid rgba(219,39,119,0.3);
+    }
+    #share-toast.show { opacity: 1; }
+
+    /* =============================================
+       RAKHI GLOW PULSE
+    ============================================= */
+    .rakhi-illustration svg {
+      animation: rakhi-glow 3s ease-in-out infinite;
+    }
+    @keyframes rakhi-glow {
+      0%, 100% { filter: drop-shadow(0 0 6px rgba(212,175,55,0.25)); }
+      50% { filter: drop-shadow(0 0 20px rgba(212,175,55,0.7)) drop-shadow(0 0 10px rgba(219,39,119,0.3)); }
+    }
+
+    /* =============================================
+       CELEBRATION BANNER
+    ============================================= */
+    #celebration-banner {
+      position: fixed; inset: 0;
+      background: linear-gradient(135deg, rgba(30,27,75,0.98) 0%, rgba(76,29,149,0.98) 100%);
+      z-index: 8000; display: none;
+      align-items: center; justify-content: center;
+      flex-direction: column; text-align: center; padding: 30px;
+    }
+    #celebration-banner.active { display: flex; animation: scaleIn 0.5s ease-out; }
+    .celeb-emoji { font-size: 5rem; animation: heartbeat 1s infinite; margin-bottom: 20px; }
+    .celeb-title {
+      font-family: var(--font-title); font-size: 2.8rem; color: #fef08a;
+      text-shadow: 0 0 30px rgba(251,191,36,0.6); margin-bottom: 10px;
+    }
+    .celeb-subtitle { font-family: var(--font-script); font-size: 2rem; color: #fde8f3; margin-bottom: 30px; }
+    .celeb-close-btn {
+      background: linear-gradient(135deg, var(--pink-accent), var(--purple-accent));
+      border: none; color: #fff; padding: 12px 32px;
+      border-radius: 30px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; box-shadow: 0 4px 15px rgba(219,39,119,0.4);
+      transition: transform 0.2s;
+    }
+    .celeb-close-btn:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-rakhi" style="position:relative;">
+      <span class="loader-rakhi-inner">🪢</span>
+    </div>
+    <div class="loader-text">Loading your gift...</div>
+    <div class="loader-subtext">Made with ❤️ for Peru Didi</div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox-overlay">
+    <span id="lightbox-counter">1 / 12</span>
+    <button id="lightbox-close">✕</button>
+    <button id="lightbox-prev">‹</button>
+    <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Memory">
+    <button id="lightbox-next">›</button>
+    <div id="lightbox-caption"></div>
+  </div>
+
+  <!-- Celebration Banner (shown on Rakhi Day) -->
+  <div id="celebration-banner">
+    <div class="celeb-emoji">🎊</div>
+    <div class="celeb-title">It's Raksha Bandhan!</div>
+    <div class="celeb-subtitle">Happy Rakhi, Peru Didi! 🌸</div>
+    <button class="celeb-close-btn" onclick="document.getElementById('celebration-banner').classList.remove('active')">Open My Gift 🎁</button>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="dark-toggle-btn" title="Toggle Dark Mode">🌙</button>
+
+  <!-- Share Button -->
+  <button id="share-btn" title="Share this gift">🔗</button>
+  <div id="share-toast">🔗 Link copied!</div>
+
+  <!-- Background Canvas for Particles & Petals -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Unified Login & Countdown Entrance Screen (State 2, Shown if not authenticated) -->
+  <div id="login-screen" class="app-screen" style="background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%); color: #fff;">
+    <div style="max-width: 460px; width: 100%; padding: 20px; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center;">
+      
+      <!-- Logo / Header -->
+      <span class="teaser-gift-icon" style="font-size: 3.2rem; margin-bottom: 10px; animation: heartbeat 2s infinite; display: inline-block;">🎁</span>
+      <h1 class="teaser-title" style="font-size: 1.8rem; margin-bottom: 6px; font-family: var(--font-title);">For Princess Peru... 🌸</h1>
+      <p class="teaser-msg" style="font-size: 0.88rem; margin-bottom: 20px; color: rgba(255,255,255,0.7); text-align: center;">Here is a special digital box of childhood memories. Countdown to Rakhi day:</p>
+
+      <!-- SVG Gradient definition for Circular Progress Rings -->
+      <svg style="width:0; height:0; position:absolute;">
+        <defs>
+          <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff2a85"></stop>
+            <stop offset="100%" stop-color="#ffd700"></stop>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <!-- Teaser Countdown Display with Circular SVG Progress Rings -->
+      <div class="countdown-container" style="justify-content: center; gap: 15px; margin-bottom: 25px; display: flex; width: 100%;">
+        <!-- Days Ring -->
+        <div class="countdown-ring-card">
+          <svg class="countdown-progress-svg" width="84" height="84">
+            <circle class="ring-track" cx="42" cy="42" r="36"></circle>
+            <circle class="ring-fill" id="ring-days" cx="42" cy="42" r="36"></circle>
+          </svg>
+          <div class="ring-text-container">
+            <div class="countdown-value" id="teaser-days">00</div>
+            <div class="countdown-label">Days</div>
+          </div>
+        </div>
+
+        <!-- Hours Ring -->
+        <div class="countdown-ring-card">
+          <svg class="countdown-progress-svg" width="84" height="84">
+            <circle class="ring-track" cx="42" cy="42" r="36"></circle>
+            <circle class="ring-fill" id="ring-hours" cx="42" cy="42" r="36"></circle>
+          </svg>
+          <div class="ring-text-container">
+            <div class="countdown-value" id="teaser-hours">00</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+        </div>
+
+        <!-- Minutes Ring -->
+        <div class="countdown-ring-card">
+          <svg class="countdown-progress-svg" width="84" height="84">
+            <circle class="ring-track" cx="42" cy="42" r="36"></circle>
+            <circle class="ring-fill" id="ring-minutes" cx="42" cy="42" r="36"></circle>
+          </svg>
+          <div class="ring-text-container">
+            <div class="countdown-value" id="teaser-minutes">00</div>
+            <div class="countdown-label">Mins</div>
+          </div>
+        </div>
+
+        <!-- Seconds Ring -->
+        <div class="countdown-ring-card">
+          <svg class="countdown-progress-svg" width="84" height="84">
+            <circle class="ring-track" cx="42" cy="42" r="36"></circle>
+            <circle class="ring-fill" id="ring-seconds" cx="42" cy="42" r="36"></circle>
+          </svg>
+          <div class="ring-text-container">
+            <div class="countdown-value" id="teaser-seconds">00</div>
+            <div class="countdown-label">Secs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Perspective Card Wrapper for Gated Login -->
+      <div class="login-card-3d-wrapper" id="login-card-container">
+        <div class="login-card-3d-inner" id="login-card-inner">
+          
+          <!-- FRONT SIDE (Login Form) -->
+          <div class="login-container-card card-front">
+            <h3 class="login-title">Gift Locked 🔒</h3>
+            <p class="login-subtitle" style="font-size: 0.82rem; margin-bottom: 16px;">Unlock early or wait for the countdown to open your digital gift:</p>
+            
+            <!-- Field 1: Nickname -->
+            <div class="login-input-group">
+              <label class="login-input-label">Sister's Nickname</label>
+              <input type="text" class="login-field" id="login-nickname-input" placeholder="What does your brother call you?" autocomplete="off">
+            </div>
+
+            <!-- Field 2: Password -->
+            <div class="login-input-group">
+              <label class="login-input-label">Secret Passcode</label>
+              <input type="password" class="login-field" id="login-password-input" placeholder="Enter secret code..." autocomplete="off">
+            </div>
+
+            <button class="login-btn" id="login-submit-btn">Unlock Gift 🔑</button>
+            <div class="login-error-msg" id="login-error-display">Aww, wrong combination! Try again, Didi! 🌸</div>
+            <div style="margin-top: 15px; text-align: center;">
+              <span id="reset-login-data" style="font-size: 0.78rem; color: rgba(255,255,255,0.4); cursor: pointer; text-decoration: underline; transition: color 0.3s;">Reset all customized data & password to default 🔄</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- 3D Gift Box Stage (Shown upon correct credentials) -->
+      <div id="gift-reveal-stage" style="display: none; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin-top: 10px; animation: scaleIn 0.5s ease-out;">
+        <h3 style="font-family: var(--font-title); font-size: 1.4rem; color: #fef08a; text-align: center; margin-bottom: 25px; animation: pulse-light 2s infinite; line-height:1.4;">Tapped with love... 🎁<br><span style="font-size:0.95rem; color:#fff;">Tap the Box to Unwrap!</span></h3>
+        
+        <div class="gift-box-3d" id="interactive-gift-box">
+          <div class="gift-lid"></div>
+          <div class="gift-ribbon-horizontal"></div>
+          <div class="gift-ribbon-vertical"></div>
+          <div class="gift-body"></div>
+          <div class="gift-bow"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Music toggle speaker button -->
+  <div class="audio-control" id="audio-toggle-btn" title="Toggle Music">
+    <!-- Speaker Mute SVG Icon -->
+    <svg id="speaker-icon" viewBox="0 0 24 24">
+      <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zm-8 5.77H2v6h4l5 5V4L6 9z"/>
+    </svg>
+  </div>
+
+  <!-- Main Website Wrapper -->
+  <div class="main-content" id="main-content-area">
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <!-- Ornate Golden Rakhi SVG -->
+      <div class="rakhi-illustration">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <!-- Outer gold glow ring -->
+          <circle cx="100" cy="100" r="85" fill="none" stroke="#d4af37" stroke-width="2" stroke-dasharray="10 5" opacity="0.6"/>
+          <!-- Red thread left -->
+          <path d="M 0 100 Q 50 85, 100 100" fill="none" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+          <path d="M 0 95 Q 50 115, 100 100" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <!-- Red thread right -->
+          <path d="M 100 100 Q 150 115, 200 100" fill="none" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+          <path d="M 100 100 Q 150 85, 200 105" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          
+          <!-- Rakhi Mandala details -->
+          <circle cx="100" cy="100" r="60" fill="radial-gradient(circle, #db2777 0%, #7c3aed 100%)" stroke="#d4af37" stroke-width="3"/>
+          <circle cx="100" cy="100" r="48" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="6 3" opacity="0.8"/>
+          
+          <!-- Outer gold petal pattern -->
+          <g transform="translate(100,100)">
+            <!-- 12 Petals -->
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(30)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(60)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(90)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(120)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(150)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(180)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(210)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(240)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(270)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(300)" opacity="0.9"/>
+            <path d="M 0 -60 C 10 -45, -10 -45, 0 0" fill="#d4af37" transform="rotate(330)" opacity="0.9"/>
+          </g>
+          
+          <!-- Inner details -->
+          <circle cx="100" cy="100" r="32" fill="#db2777" stroke="#d4af37" stroke-width="2"/>
+          <circle cx="100" cy="100" r="20" fill="#fbcfe8"/>
+          <!-- Star/Pearl center -->
+          <circle cx="100" cy="100" r="8" fill="#fff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+          <!-- Red dots round border -->
+          <g transform="translate(100,100)" fill="#dc2626">
+            <circle cx="0" cy="-26" r="3"/>
+            <circle cx="13" cy="-22" r="3"/>
+            <circle cx="22" cy="-13" r="3"/>
+            <circle cx="26" cy="0" r="3"/>
+            <circle cx="22" cy="13" r="3"/>
+            <circle cx="13" cy="22" r="3"/>
+            <circle cx="0" cy="26" r="3"/>
+            <circle cx="-13" cy="22" r="3"/>
+            <circle cx="-22" cy="13" r="3"/>
+            <circle cx="-26" cy="0" r="3"/>
+            <circle cx="-22" cy="-13" r="3"/>
+            <circle cx="-13" cy="-22" r="3"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="welcome-subtitle" id="view-greeting-didi-subtitle">Happy Raksha Bandhan to my</div>
+      <h1 class="welcome-title">Sweetest <span id="view-sister-name" class="typing-target"></span><span class="typing-cursor"></span> 🌸</h1>
+      <p class="welcome-description scroll-reveal">
+        No matter how much we argue, tease each other, or live miles apart, you will always be my protector, my best friend, and my favourite person. Today is a celebration of our beautiful bond, Didi! 💖
+      </p>
+    </section>
+
+
+
+    <!-- CHILDHOOD MEMORIES GALLERY -->
+    <section id="memories" class="scroll-reveal">
+      <h2 class="section-title">Memories Gallery 📸</h2>
+      
+      <!-- Category Tabs -->
+      <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+        <button class="tab-btn active" data-category="all" onclick="filterMemories('all')">All Moments ✨</button>
+        <button class="tab-btn" data-category="festival" onclick="filterMemories('festival')">Festivals & Rituals 🪔</button>
+        <button class="tab-btn" data-category="sibling" onclick="filterMemories('sibling')">Sibling Fun 🌸</button>
+      </div>
+
+      <div class="polaroid-grid" id="memories-grid-container">
+        <!-- Will be populated dynamically by JavaScript -->
+      </div>
+      
+      <!-- Hidden file input for uploading images dynamically -->
+      <input type="file" id="photo-file-input" accept="image/*" style="display: none;">
+    </section>
+
+    <!-- STORY TIMELINE SECTION -->
+    <section id="timeline">
+      <h2 class="section-title">Timeline of Our Journey</h2>
+      
+      <div class="timeline-container" id="timeline-container-element">
+        <!-- Item 1 -->
+        <div class="timeline-item left">
+          <span class="timeline-badge" id="timeline-year-0">Early Days</span>
+          <div class="timeline-card">
+            <h3 class="timeline-title" id="timeline-title-0">Sweet Childhood Fights</h3>
+            <p class="timeline-desc" id="timeline-desc-0">Remember when we fought over the TV remote control and who got the bigger slice of chocolate? Those silly disputes are now my fondest memories.</p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-item right">
+          <span class="timeline-badge" id="timeline-year-1">School Days</span>
+          <div class="timeline-card">
+            <h3 class="timeline-title" id="timeline-title-1">School Bus Secrets</h3>
+            <p class="timeline-desc" id="timeline-desc-1">Sharing lunches, hiding our marks from parents, and holding my hand when I was nervous on the first day of school. You were my guardian angel.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-item left">
+          <span class="timeline-badge" id="timeline-year-2">Grown Up</span>
+          <div class="timeline-card">
+            <h3 class="timeline-title" id="timeline-title-2">Moving to Different Cities</h3>
+            <p class="timeline-desc" id="timeline-desc-2">Even when college and work separated us by hundreds of miles, our late-night phone calls kept us close. Distance never stood a chance against us.</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-item right">
+          <span class="timeline-badge" id="timeline-year-3">Always</span>
+          <div class="timeline-card">
+            <h3 class="timeline-title" id="timeline-title-3">Stronger Together</h3>
+            <p class="timeline-desc" id="timeline-desc-3">Whatever life throws at us, I know I can count on you, and you can always count on me. You are my rock, Didi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEARTFELT ENVELOPE / CARD SECTION -->
+    <section id="envelope-section">
+      <h2 class="section-title">A Special Letter For You</h2>
+      <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">Tap the envelope's wax seal to open your card</p>
+      
+      <div class="envelope-interactive-container">
+        <!-- Interactive envelope -->
+        <div class="envelope-wrapper" id="envelope-trigger">
+          <div class="envelope-flap"></div>
+          <div class="envelope-pocket"></div>
+          <div class="envelope-front-tag">Tap Seal to Open</div>
+          <div class="wax-seal" id="envelope-wax-seal"></div>
+          <div class="envelope-letter-preview">
+            <h4 id="letter-preview-to">Dearest Didi,</h4>
+            <p id="letter-preview-snippet">I wanted to take this special day of Raksha Bandhan to write down how much you truly mean to me. Since childhood, you've...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIBLING PROMISE CHECKLIST SECTION -->
+    <section id="promises-section" class="scroll-reveal">
+      <h2 class="section-title">Sibling Promises Checklist 📜</h2>
+      <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; text-align: center;">भावाने दिदीला दिलेली काही गोड आणि खात्रीशीर वचने! ❤️</p>
+      
+      <div class="promises-container">
+        <!-- Promise Item 1 -->
+        <div class="promise-item">
+          <div class="promise-checkbox">
+            <span class="promise-check-icon">✓</span>
+          </div>
+          <div class="promise-content">
+            <h4 class="promise-title">Snack Share Protocol 🍕</h4>
+            <p class="promise-description">माझ्या खाऊमधील ५०% हिस्सा नेहमी तुला हक्काने मिळणार (अगदी शेवटचा पिझ्झा किंवा चॉकलेट स्लाईस सुद्धा!).</p>
+          </div>
+        </div>
+
+        <!-- Promise Item 2 -->
+        <div class="promise-item">
+          <div class="promise-checkbox">
+            <span class="promise-check-icon">✓</span>
+          </div>
+          <div class="promise-content">
+            <h4 class="promise-title">Emergency Call Priority 📱</h4>
+            <p class="promise-description">मी कितीही महत्त्वाचा व्हिडिओ गेम खेळत किंवा कामात असलो, तरी तुझा फोन नेहमी पहिल्या रिंगला उचलला जाईल!</p>
+          </div>
+        </div>
+
+        <!-- Promise Item 3 -->
+        <div class="promise-item">
+          <div class="promise-checkbox">
+            <span class="promise-check-icon">✓</span>
+          </div>
+          <div class="promise-content">
+            <h4 class="promise-title">Family Argument Defense Shield 🛡️</h4>
+            <p class="promise-description">घरात कोणाशीही वाद किंवा मस्ती चालू असताना, तुझा छोटा भाऊ नेहमी डोळे झाकून तुझीच बाजू घेणार.</p>
+          </div>
+        </div>
+
+        <!-- Promise Item 4 -->
+        <div class="promise-item">
+          <div class="promise-checkbox">
+            <span class="promise-check-icon">✓</span>
+          </div>
+          <div class="promise-content">
+            <h4 class="promise-title">Infinite Teasing & Protection 🌸</h4>
+            <p class="promise-description">तुला आयुष्यभर त्रास देण्याचा माझा भाऊ म्हणून असलेला गोड हक्क मी कधीही सोडणार नाही, आणि तुझ्या चेहऱ्यावरील हसू नेहमी जपणार!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORLD'S BEST SISTER CERTIFICATE SECTION -->
+    <section id="certificate-section">
+      <h2 class="section-title">World's Best Sister Certificate 🏆</h2>
+      <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem;">A special recognition for being the most amazing sister in the universe!</p>
+      
+      <div class="scroll-container">
+        <!-- Certificate Scroll -->
+        <div class="certificate-scroll" id="certificate-scroll-card">
+          <div class="certificate-inner-border">
+            <div class="certificate-seal">⭐</div>
+            <div class="certificate-header">Certificate of Excellence</div>
+            <div class="certificate-subtext">This is proudly presented to</div>
+            <div class="certificate-name" id="cert-sister-name">Prerna Solanke</div>
+            <div class="certificate-reason">For being the best sister in the entire world, for always covering up my silly mistakes, giving the best advice, sharing her snacks, and bringing infinite smiles into my life. 💖</div>
+            
+            <div class="certificate-footer">
+              <div class="footer-sign">
+                <span class="sign-title">Presented by</span>
+                <span class="sign-value" id="cert-brother-name">Adarsh Surye</span>
+              </div>
+              <div class="footer-date">
+                <span class="sign-title">Date</span>
+                <span class="sign-value" id="cert-date-string">Raksha Bandhan 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Action buttons -->
+      <div style="display:flex; justify-content:center; gap:15px; margin-top:25px;">
+        <button class="cert-btn" onclick="screenshotCertificate()">Save Certificate Image 📸</button>
+      </div>
+    </section>
+
+    <!-- CLOSING SECTION -->
+    <section id="closing-section">
+      <div class="closing-wishes">Happy Raksha Bandhan, Didi!</div>
+      <p class="closing-text">
+        Though threads are made of simple cotton, they represent an unbreakable shield of love and memories. I promise to stand by you, laugh with you, and look out for you, always.
+      </p>
+      <div style="font-size: 1.5rem; color: var(--gold-solid); margin-bottom: 20px;">❤️❤️❤️</div>
+      <div class="closing-sign">With love, <span id="view-brother-name">Adarsh Surye</span></div>
+    </section>
+  </div>
+
+  <!-- FULLSCREEN LETTER MODAL -->
+  <div class="letter-modal" id="letter-modal-container">
+    <div class="letter-paper">
+      <!-- Wax seal close button -->
+      <div class="wax-seal-close" id="letter-close-btn" title="Close Letter">✕</div>
+      <div class="letter-header" id="view-letter-to">Dearest Didi,</div>
+      <div class="letter-body" id="view-letter-body">I wanted to take this special day of Raksha Bandhan to write down how much you truly mean to me.
+
+Since childhood, you've held my hand through the scariest days, supported my dreams, and covered up all my silly mistakes. I honestly don't know how I would have survived growing up without your guidance (and your snacks!).
+
+On this beautiful day, I want to promise you that no matter how old we get or where life takes us, I will always be just a call away. I will always stand by you, protect your smiles, and cherish the bond we share.
+
+Thank you for being the best sister in the entire world.
+
+Happy Raksha Bandhan!</div>
+      <div class="letter-signature" id="view-letter-from">With Love,<br><span id="view-letter-from-name">Adarsh</span></div>
+    </div>
+  </div>
+
+  <!-- FLOATING TOOL ATTACHED TO CURSOR -->
+  <div class="floating-tool" id="cursor-floating-tool">
+    <!-- Will be filled dynamically by Javascript with Diya, Tilak brush or Sweet -->
+  </div>
+
+  <!-- PERSONALIZER TOGGLE (GEAR ICON) -->
+  <div id="editor-toggle" title="Customize this Gift">
+    <svg viewBox="0 0 24 24">
+      <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+    </svg>
+  </div>
+
+  <!-- EDITOR DRAWER MODAL -->
+  <div class="editor-modal" id="editor-modal-container">
+    <div class="editor-panel">
+      <div class="editor-header">
+        <div class="editor-title">Customize Sibling Gift 🎁</div>
+        <button class="editor-close" id="editor-close-btn">✕</button>
+      </div>
+      
+      <div style="font-size: 0.85rem; color: var(--purple-accent); background: var(--purple-soft); padding: 8px 12px; border-radius: 6px; margin-bottom: 20px; font-weight: 500;">
+        Change the values below to personalize the page. Click "Save" to apply. You can also "Download" a self-contained copy of the page with base64 images included!
+      </div>
+
+      <!-- SIBLING NAMES -->
+      <div class="editor-group">
+        <label class="editor-label">Sister's Name</label>
+        <input type="text" class="editor-input" id="edit-sister-name" value="Peru Didi">
+      </div>
+      <div class="editor-group">
+        <label class="editor-label">Brother's Name</label>
+        <input type="text" class="editor-input" id="edit-brother-name" value="Adarsh">
+      </div>
+
+
+      <!-- RAKHI COUNTDOWN DATE -->
+      <div class="editor-group">
+        <label class="editor-label">Festival Date</label>
+        <input type="date" class="editor-input" id="edit-countdown-date" value="2026-08-28">
+        <div class="editor-help">Countdown will target 00:00 AM on this date. Default is August 28, 2026.</div>
+      </div>
+
+      <!-- LETTER EDIT -->
+      <div class="editor-section-title">The Handwritten Letter</div>
+      <div class="editor-group">
+        <label class="editor-label">Letter Salutation</label>
+        <input type="text" class="editor-input" id="edit-letter-to" value="Dearest Didi,">
+      </div>
+      <div class="editor-group">
+        <label class="editor-label">Letter Content</label>
+        <textarea class="editor-textarea" id="edit-letter-body">I wanted to take this special day of Raksha Bandhan to write down how much you truly mean to me.
+
+Since childhood, you've held my hand through the scariest days, supported my dreams, and covered up all my silly mistakes. I honestly don't know how I would have survived growing up without your guidance (and your snacks!).
+
+On this beautiful day, I want to promise you that no matter how old we get or where life takes us, I will always be just a call away. I will always stand by you, protect your smiles, and cherish the bond we share.
+
+Thank you for being the best sister in the entire world.
+
+Happy Raksha Bandhan!</textarea>
+      </div>
+
+      <!-- POLAROIDS EDIT -->
+      <div class="editor-section-title">Memories Polaroid Gallery</div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Click Polaroid cards in the main screen to change pictures directly, or edit captions below:</p>
+      
+      <div id="editor-polaroids-container"></div>
+
+      <!-- TIMELINE EDIT -->
+      <div class="editor-section-title">Timeline Milestones</div>
+      <!-- Timeline Node 1 -->
+      <div class="editor-group" style="background:#f9fafb; padding:10px; border-radius:8px;">
+        <label class="editor-label">Milestone 1 (Badge / Title)</label>
+        <div style="display:flex; gap:10px; margin-bottom:6px;">
+          <input type="text" style="width:30%" class="editor-input" id="edit-time-badge-0" value="Early Days">
+          <input type="text" style="width:70%" class="editor-input" id="edit-time-title-0" value="Sweet Childhood Fights">
+        </div>
+        <textarea class="editor-textarea" style="min-height:50px;" id="edit-time-desc-0">Remember when we fought over the TV remote control and who got the bigger slice of chocolate? Those silly disputes are now my fondest memories.</textarea>
+      </div>
+
+      <!-- Timeline Node 2 -->
+      <div class="editor-group" style="background:#f9fafb; padding:10px; border-radius:8px; margin-top:10px;">
+        <label class="editor-label">Milestone 2 (Badge / Title)</label>
+        <div style="display:flex; gap:10px; margin-bottom:6px;">
+          <input type="text" style="width:30%" class="editor-input" id="edit-time-badge-1" value="School Days">
+          <input type="text" style="width:70%" class="editor-input" id="edit-time-title-1" value="School Bus Secrets">
+        </div>
+        <textarea class="editor-textarea" style="min-height:50px;" id="edit-time-desc-1">Sharing lunches, hiding our marks from parents, and holding my hand when I was nervous on the first day of school. You were my guardian angel.</textarea>
+      </div>
+
+      <!-- Timeline Node 3 -->
+      <div class="editor-group" style="background:#f9fafb; padding:10px; border-radius:8px; margin-top:10px;">
+        <label class="editor-label">Milestone 3 (Badge / Title)</label>
+        <div style="display:flex; gap:10px; margin-bottom:6px;">
+          <input type="text" style="width:30%" class="editor-input" id="edit-time-badge-2" value="Grown Up">
+          <input type="text" style="width:70%" class="editor-input" id="edit-time-title-2" value="Moving to Different Cities">
+        </div>
+        <textarea class="editor-textarea" style="min-height:50px;" id="edit-time-desc-2">Even when college and work separated us by hundreds of miles, our late-night phone calls kept us close. Distance never stood a chance against us.</textarea>
+      </div>
+
+      <!-- Timeline Node 4 -->
+      <div class="editor-group" style="background:#f9fafb; padding:10px; border-radius:8px; margin-top:10px;">
+        <label class="editor-label">Milestone 4 (Badge / Title)</label>
+        <div style="display:flex; gap:10px; margin-bottom:6px;">
+          <input type="text" style="width:30%" class="editor-input" id="edit-time-badge-3" value="Always">
+          <input type="text" style="width:70%" class="editor-input" id="edit-time-title-3" value="Stronger Together">
+        </div>
+        <textarea class="editor-textarea" style="min-height:50px;" id="edit-time-desc-3">Whatever life throws at us, I know I can count on you, and you can always count on me. You are my rock, Didi.</textarea>
+      </div>
+
+      <!-- LOGIN GATING SETTINGS -->
+      <div class="editor-section-title">Login Gate Settings 🔒</div>
+      <div class="editor-group">
+        <label class="editor-label">Sister's Nickname (Passcode 1)</label>
+        <input type="text" class="editor-input" id="edit-login-nickname" value="PRINCESS_PERU">
+      </div>
+      <div class="editor-group">
+        <label class="editor-label">Secret Password (Passcode 2)</label>
+        <input type="text" class="editor-input" id="edit-login-password" value="Peru0902">
+      </div>
+      <div class="editor-group" style="background: #fdf2f8; padding: 10px; border-radius: 8px; border: 1px solid #fbcfe8;">
+        <label class="editor-label" style="color: var(--pink-accent); font-weight: 700; display:flex; align-items:center; gap:6px;">Bypass Gate & Preview</label>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <input type="checkbox" id="edit-bypass-gate" style="width:18px; height:18px; cursor:pointer;">
+          <span style="font-size:0.8rem; color:var(--text-dark);">Bypass countdown & login for editing</span>
+        </div>
+      </div>
+
+      <button class="editor-save-btn" id="editor-save-btn">Save Changes 💾</button>
+      <button class="editor-download-btn" id="editor-download-btn">Download Gift HTML file 📥</button>
+      
+      <div style="margin-top: 15px; text-align: center;">
+        <p style="font-size: 0.75rem; color: var(--text-muted)">Changes are stored in your browser's local cache. Download the file to generate a finished webpage with your modifications permanently embedded!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT BLOCK containing Web Audio synthesis, interactive puja mechanics, particle effects and customizer script -->
+  <script>
+    // ----------------------------------------------------
+    // Configuration & State Data (Will be updated by Editor)
+    // ----------------------------------------------------
+    let SIBLING_DATA = {
+      sisterName: "Peru Didi",
+      brotherName: "Adarsh Surye",
+      letterTo: "Dearest Didi,",
+      letterBody: `I wanted to take this special day of Raksha Bandhan to write down how much you truly mean to me.
+
+Didi, you are older than me, which means you were there first — there to lead the way, set the example, and show me how things are done. You have always been my first teacher, my first best friend, and my first superhero.
+
+I remember looking up at you and thinking — wow, I want to be just like her someday. Your confidence, your warmth, and the way you handle everything with so much grace — I have always admired you more than you know.
+
+On this beautiful day of Raksha Bandhan, I want to promise you that your little brother will always stand by you. No matter the distance, no matter the years — I am always just a call away.
+
+Thank you for being the best Didi in the entire world.
+
+Happy Raksha Bandhan! 🎉`,
+      countdownTarget: "2026-08-28",
+      loginNickname: "PRINCESS_PERU",
+      loginPassword: "Peru0902",
+      nicknameHint: "Your royal nickname in capitals! 👑",
+      passwordHint: "Your name + birthday (DDMM format) 🎂",
+      polaroids: [
+        { imgData: "images/aarti_ritual.jpg", caption: "Traditional Rakhi Aarti! The best part of the festival is Peru's blessings. 🪔", category: "festival" },
+        { imgData: "images/purple_kurta_standing.jpg", caption: "Rocking our ethnic look! Sibling goals on festival day. ✨", category: "festival", objectPosition: "center 15%" },
+        { imgData: "images/tying_rakhi_sofa.jpg", caption: "The sacred bond tied in a thread. Promises of protection and lifelong support. 🌸", category: "festival" },
+        { imgData: "images/diwali_rangoli.jpg", caption: "Celebrating Diwali together! Beautiful lights, gorgeous rangoli, and warm smiles. 🕯️", category: "festival" },
+        { imgData: "images/sofa_sitting_cake.jpg", caption: "Our birthday celebrations! Cutting cakes and sharing the sweetest moments. 🎂", category: "sibling" },
+        { imgData: "images/sofa_standing.jpg", caption: "Striking a pose! No matter how tall we grow, we remain kids at heart. 😊", category: "sibling", objectPosition: "center 15%" },
+        { imgData: "images/close_up_selfie.jpg", caption: "Our happy selfie! That million-dollar smile that always brightens my day. 💕", category: "sibling", objectPosition: "center 20%" },
+        { imgData: "images/selfie_teddy_bear.jpg", caption: "Selfie time with Didi and her giant teddy bear! Sibling smiles at their best. 🧸", category: "sibling", objectPosition: "center 20%" },
+        { imgData: "images/selfie_fairy_lights.jpg", caption: "Lit up by warm fairy lights and sibling love. Cozy night vibes together. ✨", category: "sibling", objectPosition: "center 20%" },
+        { imgData: "images/blue_shirt_standing.jpg", caption: "Standing together, standing strong. A casual sibling portrait. 🌸", category: "sibling", objectPosition: "center 15%" },
+        { imgData: "images/selfie_pink_teddy.jpg", caption: "Another sweet selfie with Didi and her pink teddy bear! Big smiles and happy vibes. 💖", category: "sibling", objectPosition: "center 20%" },
+        { imgData: "images/family_function.jpg", caption: "Fun times at the family function! Dressing up, posing, and making beautiful memories together. ✨", category: "sibling", objectPosition: "center 15%" }
+      ],
+      portraitImgData: "images/close_up_selfie.jpg",
+      timeline: [
+        { badge: "Little Me 👶", title: "You Were Already There", desc: "Before I even knew what the world was, you were already my Didi. You were born first, so you showed me what it meant to be loved by a sibling. My very first memory of happiness has you in it." },
+        { badge: "School Days 📚", title: "My First Role Model", desc: "You were always a step ahead — in class, in life, in everything. I watched you handle tough days and still smile, and I quietly thought: that's the kind of person I want to become." },
+        { badge: "Growing Up 🌱", title: "The One I Always Called First", desc: "Whether it was good news or a bad day, you were the first person I called. Your advice was never just words — it was wisdom from someone who had already walked the road I was on." },
+        { badge: "Always ❤️", title: "Still Your Little Brother", desc: "No matter how grown up I get, I will always be your chota bhai. And that is my most favourite thing about us — no matter how much changes, this never does. Happy Raksha Bandhan, Didi! 🎉" }
+      ]
+    };
+
+    // Load from LocalStorage if edits exist
+    const cachedData = localStorage.getItem("rakhi_gift_data_2026");
+    if (cachedData) {
+      try {
+        const loaded = JSON.parse(cachedData);
+        if (loaded.loginNickname === "Didu" || !loaded.loginNickname) {
+          loaded.loginNickname = "PRINCESS_PERU";
+          loaded.nicknameHint = "Your royal nickname in capitals! 👑";
+        }
+        if (loaded.loginPassword === "rakhi2026" || !loaded.loginPassword) {
+          loaded.loginPassword = "Peru0902";
+          loaded.passwordHint = "Your name + birthday (DDMM format) 🎂";
+        }
+        // Migrate polaroids if cache is from old schema (length < 12)
+        if (!loaded.polaroids || loaded.polaroids.length < 12) {
+          loaded.polaroids = SIBLING_DATA.polaroids;
+        }
+        // Migrate portrait photo if old cache is empty
+        if (!loaded.portraitImgData) {
+          loaded.portraitImgData = SIBLING_DATA.portraitImgData;
+        }
+        // Migrate brotherName to full name
+        if (loaded.brotherName === "Adarsh" || !loaded.brotherName) {
+          loaded.brotherName = "Adarsh Surye";
+        }
+        // Migrate timeline if old version (no emoji badges)
+        if (!loaded.timeline || !loaded.timeline[0].badge.includes("👶")) {
+          loaded.timeline = SIBLING_DATA.timeline;
+        }
+        SIBLING_DATA = loaded;
+      } catch (e) {
+        console.warn("Error parsing cached data", e);
+      }
+    }
+
+    // Try loading static CONFIG injected by download mechanism
+    // This allows downloading a completely customized page that preserves settings statically
+    /*%INJECTED_CONFIG%*/
+
+    // ----------------------------------------------------
+    // DOM Element References
+    // ----------------------------------------------------
+    const loginScreen = document.getElementById("login-screen");
+    const audioToggleBtn = document.getElementById("audio-toggle-btn");
+    const mainContentArea = document.getElementById("main-content-area");
+    
+    // Greetings & signatures view
+    const viewSisterName = document.getElementById("view-sister-name");
+    const viewBrotherName = document.getElementById("view-brother-name");
+    const letterPreviewTo = document.getElementById("letter-preview-to");
+    const letterPreviewSnippet = document.getElementById("letter-preview-snippet");
+    
+    // Countdown
+    const countdownTitleLabel = document.getElementById("countdown-title-label");
+    const countdownGrid = document.getElementById("countdown-grid");
+    const countdownHappyBanner = document.getElementById("countdown-happy-banner");
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    // Polaroid Image and captions
+    const memoriesGridContainer = document.getElementById("memories-grid-container");
+    const photoFileInput = document.getElementById("photo-file-input");
+
+    // Timeline view elements
+    const timelineContainerElement = document.getElementById("timeline-container-element");
+
+    // Letter Modal
+    const envelopeTrigger = document.getElementById("envelope-trigger");
+    const letterModalContainer = document.getElementById("letter-modal-container");
+    const letterCloseBtn = document.getElementById("letter-close-btn");
+    const viewLetterTo = document.getElementById("view-letter-to");
+    const viewLetterBody = document.getElementById("view-letter-body");
+    const viewLetterFromName = document.getElementById("view-letter-from-name");
+
+    // Certificate Elements
+    const certSisterName = document.getElementById("cert-sister-name");
+    const certBrotherName = document.getElementById("cert-brother-name");
+    const certDateString = document.getElementById("cert-date-string");
+
+    // Editor Sidebar elements
+    const editorToggleBtn = document.getElementById("editor-toggle");
+    const editorModalContainer = document.getElementById("editor-modal-container");
+    const editorCloseBtn = document.getElementById("editor-close-btn");
+    const editorSaveBtn = document.getElementById("editor-save-btn");
+    const editorDownloadBtn = document.getElementById("editor-download-btn");
+    const editSisterName = document.getElementById("edit-sister-name");
+    const editBrotherName = document.getElementById("edit-brother-name");
+    const editCountdownDate = document.getElementById("edit-countdown-date");
+    const editLetterTo = document.getElementById("edit-letter-to");
+    const editLetterBody = document.getElementById("edit-letter-body");
+
+    // Login Gate & Teaser Elements
+    const teaserScreen = document.getElementById("teaser-screen");
+    const teaserDays = document.getElementById("teaser-days");
+    const teaserHours = document.getElementById("teaser-hours");
+    const teaserMinutes = document.getElementById("teaser-minutes");
+    const teaserSeconds = document.getElementById("teaser-seconds");
+
+    const giftIntroGroup = document.getElementById("gift-intro-group");
+    const giftTapInstruction = document.getElementById("gift-tap-instruction");
+    const loginCardContainer = document.getElementById("login-card-container");
+    const loginNicknameInput = document.getElementById("login-nickname-input");
+    const loginPasswordInput = document.getElementById("login-password-input");
+    const loginSubmitBtn = document.getElementById("login-submit-btn");
+    const loginErrorDisplay = document.getElementById("login-error-display");
+
+    const editLoginNickname = document.getElementById("edit-login-nickname");
+    const editLoginPassword = document.getElementById("edit-login-password");
+    const editBypassGate = document.getElementById("edit-bypass-gate");
+
+    // Helper to calculate object-position based on image data to avoid cropping faces
+    function getObjectPositionForImage(item) {
+      if (item && item.objectPosition) return item.objectPosition;
+      const src = (item && typeof item === 'object') ? item.imgData : item;
+      if (!src) return "center";
+      const path = src.toLowerCase();
+      if (path.includes("standing") || path.includes("family_function")) {
+        return "center 15%";
+      }
+      if (path.includes("selfie")) {
+        return "center 20%";
+      }
+      return "center";
+    }
+
+    // ----------------------------------------------------
+    // Update HTML View with Config Data
+    // ----------------------------------------------------
+    function renderPageData() {
+      // Sibling names
+      viewSisterName.textContent = SIBLING_DATA.sisterName;
+      viewBrotherName.textContent = SIBLING_DATA.brotherName;
+      
+      // Countdown label
+      if (countdownTitleLabel) {
+        const targetDate = new Date(SIBLING_DATA.countdownTarget);
+        const options = { month: 'long', day: 'numeric', year: 'numeric' };
+        countdownTitleLabel.textContent = `Counting down to Rakhi day (${targetDate.toLocaleDateString('en-US', options)})`;
+      }
+
+      // Letter preview & contents
+      letterPreviewTo.textContent = SIBLING_DATA.letterTo;
+      const truncatedText = SIBLING_DATA.letterBody.split('\n')[0] + "...";
+      letterPreviewSnippet.textContent = truncatedText;
+      
+      viewLetterTo.textContent = SIBLING_DATA.letterTo;
+      viewLetterBody.textContent = SIBLING_DATA.letterBody;
+      viewLetterFromName.textContent = SIBLING_DATA.brotherName;
+
+      // Render Polaroids dynamically with category filter support
+      const polaroidGridContainer = document.getElementById("memories-grid-container");
+      if (polaroidGridContainer) {
+        polaroidGridContainer.innerHTML = "";
+        
+        const activeTabBtn = document.querySelector(".tab-btn.active");
+        const currentCategory = activeTabBtn ? activeTabBtn.getAttribute("data-category") : "all";
+
+        SIBLING_DATA.polaroids.forEach((item, index) => {
+          // Filter by category
+          if (currentCategory !== "all" && item.category !== currentCategory) {
+            return;
+          }
+
+          const card = document.createElement("div");
+          card.className = "polaroid-card";
+          card.onclick = () => {
+            if (item.imgData && typeof openLightboxFromGrid === 'function') {
+              openLightboxFromGrid(index);
+            } else {
+              openPhotoUploader(index);
+            }
+          };
+
+          const imgWrapper = document.createElement("div");
+          imgWrapper.className = "polaroid-img-wrapper";
+
+          const img = document.createElement("img");
+          img.id = `photo-img-${index}`;
+          img.alt = `Memory ${index + 1}`;
+          if (item.imgData) {
+            img.src = item.imgData;
+            img.style.display = "block";
+            img.style.objectPosition = getObjectPositionForImage(item);
+          } else {
+            img.style.display = "none";
+          }
+
+          // Camera SVG icon placeholder
+          const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          svg.setAttribute("class", "polaroid-placeholder-svg");
+          svg.setAttribute("id", `photo-placeholder-${index}`);
+          svg.setAttribute("viewBox", "0 0 24 24");
+          svg.style.display = item.imgData ? "none" : "block";
+          svg.innerHTML = '<path d="M4 4h3l2-3h6l2 3h3c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm8 3c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z"/>';
+
+          imgWrapper.appendChild(img);
+          imgWrapper.appendChild(svg);
+
+          const caption = document.createElement("div");
+          caption.className = "polaroid-caption";
+          caption.id = `photo-caption-${index}`;
+          caption.textContent = item.caption;
+
+          card.appendChild(imgWrapper);
+          card.appendChild(caption);
+          polaroidGridContainer.appendChild(card);
+        });
+      }
+
+      // Update certificate names (always show full name Prerna Solanke)
+      if (certSisterName) certSisterName.textContent = "Prerna Solanke";
+      if (certBrotherName) certBrotherName.textContent = "Adarsh Surye";
+      if (certDateString) {
+        const rakhiDate = new Date(SIBLING_DATA.countdownTarget || "2026-08-28");
+        const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+        certDateString.textContent = "Raksha Bandhan, " + rakhiDate.toLocaleDateString('en-US', opts);
+      }
+
+      // Render Timeline
+      SIBLING_DATA.timeline.forEach((item, index) => {
+        const badgeEl = document.getElementById(`timeline-year-${index}`);
+        const titleEl = document.getElementById(`timeline-title-${index}`);
+        const descEl = document.getElementById(`timeline-desc-${index}`);
+        if (badgeEl && titleEl && descEl) {
+          badgeEl.textContent = item.badge;
+          titleEl.textContent = item.title;
+          descEl.textContent = item.desc;
+        }
+      });
+
+      // Fill in Editor form fields
+      editSisterName.value = SIBLING_DATA.sisterName;
+      editBrotherName.value = SIBLING_DATA.brotherName;
+      editCountdownDate.value = SIBLING_DATA.countdownTarget;
+      editLetterTo.value = SIBLING_DATA.letterTo;
+      editLetterBody.value = SIBLING_DATA.letterBody;
+      
+      // Editor Credentials inputs
+      editLoginNickname.value = SIBLING_DATA.loginNickname || "Didu";
+      editLoginPassword.value = SIBLING_DATA.loginPassword || "rakhi2026";
+      
+      const isBypass = sessionStorage.getItem("rakhi_preview_bypass") === "true";
+      editBypassGate.checked = isBypass;
+      
+      // Populate Editor Polaroid Captions dynamically
+      const editorPolaroidsContainer = document.getElementById("editor-polaroids-container");
+      if (editorPolaroidsContainer) {
+        editorPolaroidsContainer.innerHTML = "";
+        SIBLING_DATA.polaroids.forEach((item, index) => {
+          const group = document.createElement("div");
+          group.className = "editor-group";
+          
+          const label = document.createElement("label");
+          label.className = "editor-label";
+          label.textContent = `Polaroid ${index + 1} Caption (${item.category === "festival" ? "Festival" : "Sibling"})`;
+          
+          const input = document.createElement("input");
+          input.type = "text";
+          input.className = "editor-input";
+          input.id = `edit-caption-${index}`;
+          input.value = item.caption;
+          
+          group.appendChild(label);
+          group.appendChild(input);
+          editorPolaroidsContainer.appendChild(group);
+        });
+      }
+      for(let i=0; i<4; i++) {
+        document.getElementById(`edit-time-badge-${i}`).value = SIBLING_DATA.timeline[i].badge;
+        document.getElementById(`edit-time-title-${i}`).value = SIBLING_DATA.timeline[i].title;
+        document.getElementById(`edit-time-desc-${i}`).value = SIBLING_DATA.timeline[i].desc;
+      }
+    }
+
+    // Memories tab filtering helper
+    function filterMemories(category) {
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      tabBtns.forEach(btn => {
+        if (btn.getAttribute("data-category") === category) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+      renderPageData();
+    }
+
+    // ----------------------------------------------------
+    // Canvas Particle background system (floating petals & stars)
+    // ----------------------------------------------------
+    const canvas = document.getElementById("particle-canvas");
+    const ctx = canvas.getContext("2d");
+    
+    let particles = [];
+    const maxParticles = 65;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    // Mouse coordinates tracking for petal physics
+    let mouse = { x: null, y: null, radius: 100 };
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+    window.addEventListener("mouseout", () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    class HoloNode {
+      constructor() {
+        this.reset();
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1.2;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.alpha = Math.random() * 0.6 + 0.2;
+        
+        const colors = ["#00f3ff", "#ff2a85", "#8b5cf6", "#ffd700"];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Bounce on edges
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+        // Mouse attraction physics
+        if (mouse.x !== null && mouse.y !== null) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            let force = (mouse.radius - dist) / mouse.radius;
+            // Attract nodes
+            this.x += (dx / dist) * force * 1.2;
+            this.y += (dy / dist) * force * 1.2;
+          }
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const density = 60; // perfect amount of nodes
+      for (let i = 0; i < density; i++) {
+        particles.push(new HoloNode());
+      }
+    }
+
+    function drawConnections() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const p1 = particles[i];
+          const p2 = particles[j];
+          
+          let dx = p1.x - p2.x;
+          let dy = p1.y - p2.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          
+          if (dist < 110) {
+            ctx.save();
+            ctx.globalAlpha = (1 - (dist / 110)) * 0.15;
+            ctx.strokeStyle = "#8b5cf6"; // futuristic purple connectors
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+            ctx.restore();
+          }
+        }
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      drawConnections();
+      requestAnimationFrame(animateParticles);
+    }
+
+    // Dynamic sparks explosion for puja interactions
+    class BlessingSparkle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 4 + 2;
+        this.speedX = (Math.random() - 0.5) * 6;
+        this.speedY = (Math.random() - 0.5) * 6;
+        this.alpha = 1;
+        this.life = 0;
+        this.maxLife = Math.random() * 30 + 20;
+        const colors = ["#facc15", "#f59e0b", "#ec4899", "#a78bfa", "#fff"];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.speedY += 0.05; // gravity
+        this.life++;
+        this.alpha = 1 - (this.life / this.maxLife);
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    let interactiveSparks = [];
+    function animateInteractiveSparks() {
+      interactiveSparks = interactiveSparks.filter(s => {
+        s.update();
+        s.draw();
+        return s.life < s.maxLife;
+      });
+      requestAnimationFrame(animateInteractiveSparks);
+    }
+    requestAnimationFrame(animateInteractiveSparks);
+
+    function spawnSparks(x, y, count = 5) {
+      for (let i = 0; i < count; i++) {
+        interactiveSparks.push(new BlessingSparkle(x, y));
+      }
+    }
+
+    // ----------------------------------------------------
+    // Web Audio Synthesized Background Music
+    // ----------------------------------------------------
+    let audioCtx = null;
+    let masterMusicGain = null;
+    let musicInterval = null;
+    let isMuted = false;
+
+    // Melody: A beautiful gentle arpeggio Cmaj7 - Am7 - Dm7 - G7
+    const notesFreq = {
+      "C4": 261.63, "D4": 293.66, "E4": 329.63, "F4": 349.23, "G4": 392.00, "A4": 440.00, "B4": 493.88,
+      "C5": 523.25, "D5": 587.33, "E5": 659.25, "F5": 698.46, "G5": 783.99, "A5": 880.00, "B5": 987.77
+    };
+
+    const loopMelody = [
+      { note: "C4", beat: 0 }, { note: "E4", beat: 0.5 }, { note: "G4", beat: 1 }, { note: "B4", beat: 1.5 },
+      { note: "E5", beat: 2 }, { note: "C5", beat: 2.5 }, { note: "B4", beat: 3 }, { note: "G4", beat: 3.5 },
+      
+      { note: "A4", beat: 4 }, { note: "C5", beat: 4.5 }, { note: "E5", beat: 5 }, { note: "G5", beat: 5.5 },
+      { note: "A5", beat: 6 }, { note: "E5", beat: 6.5 }, { note: "C5", beat: 7 }, { note: "A4", beat: 7.5 },
+
+      { note: "D4", beat: 8 }, { note: "F4", beat: 8.5 }, { note: "A4", beat: 9 }, { note: "C5", beat: 9.5 },
+      { note: "F5", beat: 10 }, { note: "D5", beat: 10.5 }, { note: "C5", beat: 11 }, { note: "A4", beat: 11.5 },
+
+      { note: "G4", beat: 12 }, { note: "B4", beat: 12.5 }, { note: "D5", beat: 13 }, { note: "F5", beat: 13.5 },
+      { note: "G5", beat: 14 }, { note: "D5", beat: 14.5 }, { note: "B4", beat: 15 }, { note: "G4", beat: 15.5 }
+    ];
+
+    function startBackgroundMusic() {
+      if (audioCtx && masterMusicGain) return;
+      
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      
+      masterMusicGain = audioCtx.createGain();
+      // Start with volume ramped according to current mute state
+      masterMusicGain.gain.setValueAtTime(isMuted ? 0 : 1, audioCtx.currentTime);
+      masterMusicGain.connect(audioCtx.destination);
+      
+      const tempo = 85; // Relaxed slow tempo
+      const beatSec = 60 / tempo;
+
+      // --- Ambient Chord Drone ---
+      // Low warm C major triad pad (C3, E3, G3)
+      const droneFreqs = [130.81, 164.81, 196.00];
+      const droneFilter = audioCtx.createBiquadFilter();
+      droneFilter.type = 'lowpass';
+      droneFilter.frequency.setValueAtTime(300, audioCtx.currentTime);
+
+      const droneGain = audioCtx.createGain();
+      droneGain.gain.setValueAtTime(0, audioCtx.currentTime);
+      // Soft fade-in for the drone over 3.5 seconds
+      droneGain.gain.linearRampToValueAtTime(0.015, audioCtx.currentTime + 3.5);
+
+      droneFreqs.forEach(freq => {
+        const osc = audioCtx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        // Soft detune chorus
+        osc.detune.setValueAtTime((Math.random() - 0.5) * 10, audioCtx.currentTime);
+        
+        osc.connect(droneFilter);
+        osc.start();
+      });
+      
+      droneFilter.connect(droneGain);
+      droneGain.connect(masterMusicGain);
+
+      // --- Melody Synthesizer ---
+      function playTone(freq, startTime, duration) {
+        if (!freq) return;
+        
+        const osc1 = audioCtx.createOscillator();
+        const osc2 = audioCtx.createOscillator();
+        const toneGain = audioCtx.createGain();
+        
+        osc1.type = 'sine';
+        osc2.type = 'triangle';
+        
+        osc1.frequency.setValueAtTime(freq, startTime);
+        osc2.frequency.setValueAtTime(freq + 1.2, startTime); // Warm detune
+        
+        toneGain.gain.setValueAtTime(0, startTime);
+        toneGain.gain.linearRampToValueAtTime(0.05, startTime + 0.15); // soft chime attack
+        toneGain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+        
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(800, startTime); // cozy lowpass
+        
+        // Simple delay node for spatial depth
+        const delay = audioCtx.createDelay();
+        delay.delayTime.setValueAtTime(beatSec * 0.75, startTime);
+        
+        const delayGain = audioCtx.createGain();
+        delayGain.gain.setValueAtTime(0.03, startTime); // feedback volume
+        
+        osc1.connect(toneGain);
+        osc2.connect(toneGain);
+        
+        toneGain.connect(filter);
+        
+        // Connect dry signal
+        filter.connect(masterMusicGain);
+        
+        // Connect echo path
+        filter.connect(delay);
+        delay.connect(delayGain);
+        delayGain.connect(masterMusicGain);
+        delayGain.connect(delay); // feedback loop
+        
+        osc1.start(startTime);
+        osc2.start(startTime);
+        osc1.stop(startTime + duration);
+        osc2.stop(startTime + duration);
+      }
+
+      function scheduleLoop() {
+        const baseTime = audioCtx.currentTime;
+        loopMelody.forEach(event => {
+          const freq = notesFreq[event.note];
+          const startTime = baseTime + (event.beat * beatSec);
+          playTone(freq, startTime, beatSec * 2.2);
+        });
+      }
+
+      scheduleLoop();
+      musicInterval = setInterval(scheduleLoop, 16 * beatSec * 1000);
+    }
+
+    function playSoundEffect(type) {
+      if (isMuted) return;
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      
+      const osc = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      
+      if (type === 'unravel') { // Chime sweep
+        const notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const t = audioCtx.currentTime + idx * 0.07;
+          playCustomChime(freq, t, 0.4);
+        });
+      } else if (type === 'success') { // Double positive chime
+        playCustomChime(523.25, audioCtx.currentTime, 0.3);
+        playCustomChime(659.25, audioCtx.currentTime + 0.15, 0.5);
+      } else if (type === 'sweet') { // Bubble bite sound
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(850, audioCtx.currentTime + 0.15);
+        gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.15);
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.15);
+      }
+    }
+
+    function playCustomChime(freq, startTime, duration) {
+      if (isMuted) return;
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      
+      const osc = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, startTime);
+      gainNode.gain.setValueAtTime(0, startTime);
+      gainNode.gain.linearRampToValueAtTime(0.1, startTime + 0.05);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+      osc.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + duration);
+    }
+
+    // Toggle Music mute/unmute
+    audioToggleBtn.addEventListener("click", () => {
+      isMuted = !isMuted;
+      if (isMuted) {
+        audioToggleBtn.style.opacity = "0.5";
+        audioToggleBtn.title = "Unmute Music";
+        if (masterMusicGain) {
+          masterMusicGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.1);
+        }
+      } else {
+        audioToggleBtn.style.opacity = "1";
+        audioToggleBtn.title = "Mute Music";
+        if (audioCtx) {
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          if (masterMusicGain) {
+            masterMusicGain.gain.setTargetAtTime(1, audioCtx.currentTime, 0.1);
+          }
+        }
+      }
+    });
+
+    // ----------------------------------------------------
+    // Gating State Controller & Verification Logic
+    // ----------------------------------------------------
+    let isAuthenticated = sessionStorage.getItem("rakhi_auth_2026") === "true";
+
+    function determineActiveState() {
+      const targetStr = SIBLING_DATA.countdownTarget + "T00:00:00";
+      const targetTime = new Date(targetStr).getTime();
+      const now = new Date().getTime();
+      const timeRemaining = targetTime - now;
+
+      const isBypass = sessionStorage.getItem("rakhi_preview_bypass") === "true";
+
+      if (isBypass) {
+        // PREVIEW / BYPASS MODE: Show main content directly
+        loginScreen.style.display = "none";
+        loginScreen.classList.add("hidden");
+        mainContentArea.style.display = "block";
+        mainContentArea.classList.add("visible");
+        
+        // Start visuals
+        initParticles();
+        animateParticles();
+        return;
+      }
+
+      if (isAuthenticated) {
+        // STATE 3: Already authenticated - Show main content directly
+        loginScreen.style.display = "none";
+        loginScreen.classList.add("hidden");
+        mainContentArea.style.display = "block";
+        mainContentArea.classList.add("visible");
+        
+        initParticles();
+        animateParticles();
+      } else {
+        // STATE 1 & 2: Show Combined Landing Gate (Countdown + Login Card)
+        loginScreen.style.display = "flex";
+        loginScreen.classList.remove("hidden");
+        mainContentArea.style.display = "none";
+        
+        // Keep the countdown active on the login gate only if time remains
+        if (timeRemaining > 0) {
+          initTeaserCountdown();
+        } else {
+          if (countdownGrid) countdownGrid.style.display = "none";
+          if (countdownHappyBanner) countdownHappyBanner.style.display = "block";
+        }
+      }
+    }
+
+
+
+    // Reset login cache function
+    const resetLoginDataBtn = document.getElementById("reset-login-data");
+    if (resetLoginDataBtn) {
+      resetLoginDataBtn.addEventListener("click", () => {
+        if (confirm("Are you sure you want to reset all custom edits and restore the default passcode?")) {
+          localStorage.removeItem("rakhi_gift_data_2026");
+          sessionStorage.clear();
+          window.location.reload();
+        }
+      });
+      resetLoginDataBtn.addEventListener("mouseover", () => {
+        resetLoginDataBtn.style.color = "rgba(255,255,255,0.8)";
+      });
+      resetLoginDataBtn.addEventListener("mouseout", () => {
+        resetLoginDataBtn.style.color = "rgba(255,255,255,0.4)";
+      });
+    }
+
+    // Wire up interactive gift box reveal
+    const giftRevealStage = document.getElementById("gift-reveal-stage");
+    const interactiveGiftBox = document.getElementById("interactive-gift-box");
+
+    // Handle Login verification
+    loginSubmitBtn.addEventListener("click", () => {
+      const inputNick = loginNicknameInput.value.trim().toLowerCase();
+      const inputPass = loginPasswordInput.value.trim().toLowerCase();
+      
+      const configNick = (SIBLING_DATA.loginNickname || "Didu").trim().toLowerCase();
+      const configPass = (SIBLING_DATA.loginPassword || "Peru0902").trim().toLowerCase();
+
+      if (inputNick === configNick && inputPass === configPass) {
+        // CORRECT LOG IN!
+        isAuthenticated = true;
+        sessionStorage.setItem("rakhi_auth_2026", "true");
+        
+        // Hide form card and countdown
+        loginCardContainer.style.display = "none";
+        const teaserMsg = document.querySelector(".teaser-msg");
+        if (teaserMsg) teaserMsg.style.display = "none";
+        const countdownContainer = document.querySelector(".countdown-container");
+        if (countdownContainer) countdownContainer.style.display = "none";
+        const teaserTitle = document.querySelector(".teaser-title");
+        if (teaserTitle) teaserTitle.textContent = "A Gift For You! 🎁";
+        
+        // Show Gift box stage
+        giftRevealStage.style.display = "flex";
+        playSoundEffect('success');
+        
+        // Spawn gold sparkles around the gift box
+        spawnSparks(window.innerWidth / 2, window.innerHeight / 2, 25);
+      } else {
+        // WRONG COMBINATION - Shake card & show error
+        loginCardContainer.classList.add("shake");
+        loginPasswordInput.value = ""; // clear password
+        loginErrorDisplay.style.display = "block";
+        
+        // Play failure chime (synthesize a lower buzzer chord)
+        if (audioCtx && !isMuted) {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(100, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.3);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.3);
+        }
+        
+        setTimeout(() => {
+          loginCardContainer.classList.remove("shake");
+        }, 500);
+      }
+    });
+
+    // Tap interactive gift box to open it
+    interactiveGiftBox.addEventListener("click", () => {
+      interactiveGiftBox.classList.add("opening");
+      playSoundEffect('unravel');
+      
+      // Giant particle explosion
+      spawnSparks(window.innerWidth / 2, window.innerHeight / 2, 75);
+      
+      setTimeout(() => {
+        executeGiftReveal();
+      }, 1200);
+    });
+
+    function executeGiftReveal() {
+      // Start background music context (Disabled as requested)
+      // startBackgroundMusic();
+
+      // Transition elements
+      loginScreen.classList.add("hidden");
+      
+      setTimeout(() => {
+        loginScreen.style.display = "none";
+        mainContentArea.style.display = "block";
+        
+        // smooth reveal
+        setTimeout(() => {
+          mainContentArea.classList.add("visible");
+        }, 50);
+        
+        // Start background visual particle animation
+        initParticles();
+        animateParticles();
+      }, 800);
+    }
+
+    // ----------------------------------------------------
+    // Countdown Timer & Teaser Logic
+    // ----------------------------------------------------
+    let timerInterval = null;
+    let teaserInterval = null;
+
+    function updateCountdown() {
+      const targetStr = SIBLING_DATA.countdownTarget + "T00:00:00";
+      const targetTime = new Date(targetStr).getTime();
+      const now = new Date().getTime();
+      const timeRemaining = targetTime - now;
+
+      if (timeRemaining <= 0) {
+        // Countdown has passed!
+        if (countdownGrid) countdownGrid.style.display = "none";
+        if (countdownHappyBanner) countdownHappyBanner.style.display = "block";
+        
+        if (timerInterval) clearInterval(timerInterval);
+        if (teaserInterval) clearInterval(teaserInterval);
+        
+        // Re-evaluate gate state (automatically shifts teaser -> login screen)
+        determineActiveState();
+      } else {
+        if (countdownGrid) countdownGrid.style.display = "flex";
+        if (countdownHappyBanner) countdownHappyBanner.style.display = "none";
+        
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        // Update main page countdown labels safely
+        if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+
+        // Update teaser page countdown labels
+        const tDays = document.getElementById("teaser-days");
+        const tHours = document.getElementById("teaser-hours");
+        const tMins = document.getElementById("teaser-minutes");
+        const tSecs = document.getElementById("teaser-seconds");
+        if (tDays) tDays.textContent = String(days).padStart(2, '0');
+        if (tHours) tHours.textContent = String(hours).padStart(2, '0');
+        if (tMins) tMins.textContent = String(minutes).padStart(2, '0');
+        if (tSecs) tSecs.textContent = String(seconds).padStart(2, '0');
+
+        // Update SVG Progress Rings
+        const ringSec = document.getElementById("ring-seconds");
+        const ringMin = document.getElementById("ring-minutes");
+        const ringHr = document.getElementById("ring-hours");
+        const ringDay = document.getElementById("ring-days");
+        if (ringSec) ringSec.style.strokeDashoffset = 226 - (226 * seconds) / 60;
+        if (ringMin) ringMin.style.strokeDashoffset = 226 - (226 * minutes) / 60;
+        if (ringHr) ringHr.style.strokeDashoffset = 226 - (226 * hours) / 24;
+        if (ringDay) ringDay.style.strokeDashoffset = 226 - (226 * Math.min(days, 30)) / 30;
+      }
+    }
+
+    function initCountdown() {
+      if (timerInterval) clearInterval(timerInterval);
+      const targetStr = SIBLING_DATA.countdownTarget + "T00:00:00";
+      const targetTime = new Date(targetStr).getTime();
+      const now = new Date().getTime();
+      if (targetTime - now > 0) {
+        updateCountdown();
+        timerInterval = setInterval(updateCountdown, 1000);
+      } else {
+        updateCountdown();
+      }
+    }
+
+    function initTeaserCountdown() {
+      if (teaserInterval) clearInterval(teaserInterval);
+      const targetStr = SIBLING_DATA.countdownTarget + "T00:00:00";
+      const targetTime = new Date(targetStr).getTime();
+      const now = new Date().getTime();
+      if (targetTime - now > 0) {
+        updateCountdown();
+        teaserInterval = setInterval(updateCountdown, 1000);
+      } else {
+        updateCountdown();
+      }
+    }
+
+    // ----------------------------------------------------
+    // Polaroid Image Uploading/Cropping (Code level helpers)
+    // ----------------------------------------------------
+    let selectedPolaroidIndex = null;
+
+    function openPhotoUploader(index) {
+      // Direct file selection when clicking the polaroid
+      selectedPolaroidIndex = index;
+      photoFileInput.click();
+    }
+
+    // Listening for image selection
+    photoFileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const base64Str = evt.target.result;
+        
+        if (selectedPolaroidIndex !== null) {
+          SIBLING_DATA.polaroids[selectedPolaroidIndex].imgData = base64Str;
+          renderPageData();
+          playSoundEffect('success');
+        }
+        
+        // Cache immediately in localstorage
+        localStorage.setItem("rakhi_gift_data_2026", JSON.stringify(SIBLING_DATA));
+      };
+      reader.readAsDataURL(file);
+    });
+
+
+    // ----------------------------------------------------
+    // Envelope 3D Card Opening Mechanics
+    // ----------------------------------------------------
+    let isSealBroken = false;
+    const waxSeal = document.getElementById("envelope-wax-seal");
+
+    envelopeTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      
+      if (!isSealBroken) {
+        isSealBroken = true;
+        if (waxSeal) waxSeal.classList.add("broken");
+        playSoundEffect('success');
+        
+        // Spawn gold sparks where clicked
+        spawnSparks(e.clientX, e.clientY, 15);
+        
+        // Update tag text
+        const tag = document.querySelector(".envelope-front-tag");
+        if (tag) tag.textContent = "Tap to Read";
+        return;
+      }
+      
+      envelopeTrigger.classList.toggle("opened");
+      if (envelopeTrigger.classList.contains("opened")) {
+        playSoundEffect('success');
+        
+        // Open modal letter after a short card reveal delay
+        setTimeout(() => {
+          letterModalContainer.classList.add("visible");
+        }, 800);
+      }
+    });
+
+    // Close letter modal
+    letterCloseBtn.addEventListener("click", () => {
+      letterModalContainer.classList.remove("visible");
+      // Optionally close the envelope flap back
+      envelopeTrigger.classList.remove("opened");
+    });
+
+    // Tap outside letter paper to close
+    letterModalContainer.addEventListener("click", (e) => {
+      if (e.target === letterModalContainer) {
+        letterModalContainer.classList.remove("visible");
+        envelopeTrigger.classList.remove("opened");
+      }
+    });
+
+    // ----------------------------------------------------
+    // Vertical Timeline Scroll Reveal
+    // ----------------------------------------------------
+    const timelineItems = document.querySelectorAll(".timeline-item");
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const timelineObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    timelineItems.forEach(item => {
+      timelineObserver.observe(item);
+    });
+
+    // ----------------------------------------------------
+    // Certificate Screenshot Helper
+    // ----------------------------------------------------
+    function screenshotCertificate() {
+      // Highlight animation
+      const scroll = document.getElementById('certificate-scroll-card');
+      if (!scroll) return;
+      scroll.style.boxShadow = '0 0 0 4px #00f3ff, 0 20px 40px rgba(0,243,255,0.25)';
+      setTimeout(() => {
+        scroll.style.boxShadow = '';
+      }, 800);
+
+      spawnSparks(window.innerWidth / 2, window.innerHeight / 2, 35);
+      playSoundEffect('success');
+
+      const sisterName = document.getElementById("cert-sister-name")?.textContent || "Prerna Solanke";
+      const brotherName = document.getElementById("cert-brother-name")?.textContent || "Adarsh Surye";
+      
+      const targetDateVal = SIBLING_DATA.countdownTarget || "2026-08-28";
+      const dateObj = new Date(targetDateVal);
+      const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+      const dateText = "Raksha Bandhan, " + dateObj.toLocaleDateString('en-US', opts);
+      
+      const reasonText = "For being the best sister in the entire world, for always covering up my silly mistakes, giving the best advice, sharing her snacks, and bringing infinite smiles into my life. 💖";
+
+      // Create a canvas element
+      const canvas = document.createElement("canvas");
+      canvas.width = 1200;
+      canvas.height = 800;
+      const ctx = canvas.getContext("2d");
+
+      document.fonts.ready.then(() => {
+        // 1. Draw Background Gradient (Cosmic deep spaces)
+        const grad = ctx.createLinearGradient(0, 0, 1200, 800);
+        grad.addColorStop(0, "#020208");
+        grad.addColorStop(0.5, "#0d0a1d");
+        grad.addColorStop(1, "#04010a");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1200, 800);
+
+        // 2. Draw Borders
+        // Cyber magenta outer border
+        ctx.strokeStyle = "#ff2a85";
+        ctx.lineWidth = 12;
+        ctx.strokeRect(20, 20, 1160, 760);
+
+        // Cyber cyan inner border
+        ctx.strokeStyle = "rgba(0, 243, 255, 0.4)";
+        ctx.lineWidth = 3;
+        ctx.strokeRect(38, 38, 1124, 724);
+
+        // 3. Draw Ornate Corner Accents
+        drawCertificateCorners(ctx);
+
+        // 4. Draw Gold Seal (Top) - Cyber glowing version
+        const sealX = 600;
+        const sealY = 140;
+        
+        ctx.beginPath();
+        ctx.arc(sealX, sealY, 40, 0, Math.PI * 2);
+        const sealGrad = ctx.createRadialGradient(sealX, sealY, 5, sealX, sealY, 40);
+        sealGrad.addColorStop(0, "#00f3ff");
+        sealGrad.addColorStop(0.7, "#8b5cf6");
+        sealGrad.addColorStop(1, "#120c2b");
+        ctx.fillStyle = sealGrad;
+        ctx.shadowColor = "rgba(0, 243, 255, 0.5)";
+        ctx.shadowBlur = 15;
+        ctx.fill();
+        ctx.shadowColor = "transparent";
+        ctx.shadowBlur = 0;
+
+        ctx.strokeStyle = "#00f3ff";
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Draw star inside seal
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 32px Montserrat";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("⭐", sealX, sealY);
+
+        // 5. Draw Header Text
+        ctx.fillStyle = "#00f3ff";
+        ctx.shadowColor = "rgba(0, 243, 255, 0.4)";
+        ctx.shadowBlur = 8;
+        ctx.font = "italic bold 42px Playfair Display, serif";
+        ctx.fillText("Certificate of Excellence", 600, 230);
+        ctx.shadowBlur = 0; // reset
+        ctx.shadowColor = "transparent";
+
+        // Subtext
+        ctx.fillStyle = "#ffd700";
+        ctx.font = "bold 15px Montserrat, sans-serif";
+        ctx.fillText("THIS IS PROUDLY PRESENTED TO", 600, 275);
+
+        // 6. Draw Sister's Name
+        ctx.fillStyle = "#ff2a85";
+        ctx.shadowColor = "rgba(255, 42, 133, 0.4)";
+        ctx.shadowBlur = 10;
+        ctx.font = "bold 68px Dancing Script, cursive";
+        ctx.fillText(sisterName, 600, 365);
+        ctx.shadowBlur = 0;
+        ctx.shadowColor = "transparent";
+
+        // Neon Pink Underline for name
+        ctx.strokeStyle = "rgba(255, 42, 133, 0.3)";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(380, 390);
+        ctx.lineTo(820, 390);
+        ctx.stroke();
+
+        // 7. Draw Description Text
+        ctx.fillStyle = "#e9d5ff";
+        ctx.font = "500 20px Montserrat, sans-serif";
+        wrapText(ctx, reasonText, 600, 440, 840, 34);
+
+        // 8. Draw Signatures
+        // Left side: Presented by
+        ctx.strokeStyle = "rgba(0, 243, 255, 0.4)";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(250, 630);
+        ctx.lineTo(450, 630);
+        ctx.stroke();
+
+        ctx.fillStyle = "#ffd700";
+        ctx.font = "bold 12px Montserrat, sans-serif";
+        ctx.fillText("PRESENTED BY", 350, 650);
+        
+        ctx.fillStyle = "#00f3ff";
+        ctx.font = "bold 26px Dancing Script, cursive";
+        ctx.fillText(brotherName, 350, 615);
+
+        // Right side: Date
+        ctx.beginPath();
+        ctx.moveTo(750, 630);
+        ctx.lineTo(950, 630);
+        ctx.stroke();
+
+        ctx.fillStyle = "#ffd700";
+        ctx.font = "bold 12px Montserrat, sans-serif";
+        ctx.fillText("DATE", 850, 650);
+        
+        ctx.fillStyle = "#00f3ff";
+        ctx.font = "bold 20px Dancing Script, cursive";
+        ctx.fillText(dateText, 850, 615);
+
+        // 9. Download the Image
+        try {
+          const dataUrl = canvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.download = `best_sister_certificate_${sisterName.toLowerCase().replace(/\s+/g, '_')}.png`;
+          link.href = dataUrl;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } catch (e) {
+          console.error("Canvas export failed", e);
+          alert("Aww, failed to generate the certificate image. Try taking a screenshot!");
+        }
+      });
+    }
+
+    // Helper to draw corners
+    function drawCertificateCorners(ctx) {
+      const size = 30;
+      const margin = 38;
+      const w = 1200;
+      const h = 800;
+
+      ctx.strokeStyle = "#00f3ff";
+      ctx.lineWidth = 2.5;
+
+      // Top-Left corner ornate line
+      ctx.strokeRect(margin, margin, size, size);
+      // Bottom-Left
+      ctx.strokeRect(margin, h - margin - size, size, size);
+      // Top-Right
+      ctx.strokeRect(w - margin - size, margin, size, size);
+      // Bottom-Right
+      ctx.strokeRect(w - margin - size, h - margin - size, size, size);
+    }
+
+    // Helper to wrap text
+    function wrapText(context, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      let lines = [];
+
+      for (let n = 0; n < words.length; n++) {
+        let testLine = line + words[n] + ' ';
+        let metrics = context.measureText(testLine);
+        let testWidth = metrics.width;
+        if (testWidth > maxWidth && n > 0) {
+          lines.push(line);
+          line = words[n] + ' ';
+        } else {
+          line = testLine;
+        }
+      }
+      lines.push(line);
+
+      for (let k = 0; k < lines.length; k++) {
+        context.fillText(lines[k], x, y + (k * lineHeight));
+      }
+    }
+
+    // ----------------------------------------------------
+    // Personalizer/Editor sidebar drawer logic
+    // ----------------------------------------------------
+    editorToggleBtn.addEventListener("click", () => {
+      editorModalContainer.classList.add("visible");
+    });
+
+    editorCloseBtn.addEventListener("click", () => {
+      editorModalContainer.classList.remove("visible");
+    });
+
+    editorModalContainer.addEventListener("click", (e) => {
+      if (e.target === editorModalContainer) {
+        editorModalContainer.classList.remove("visible");
+      }
+    });
+
+    // Save Changes
+    editorSaveBtn.addEventListener("click", () => {
+      SIBLING_DATA.sisterName = editSisterName.value;
+      SIBLING_DATA.brotherName = editBrotherName.value;
+      SIBLING_DATA.countdownTarget = editCountdownDate.value;
+      SIBLING_DATA.letterTo = editLetterTo.value;
+      SIBLING_DATA.letterBody = editLetterBody.value;
+      
+      // Credentials settings
+      SIBLING_DATA.loginNickname = editLoginNickname.value;
+      SIBLING_DATA.loginPassword = editLoginPassword.value;
+
+      // Bypass settings (Preview)
+      sessionStorage.setItem("rakhi_preview_bypass", editBypassGate.checked ? "true" : "false");
+
+      for (let i = 0; i < SIBLING_DATA.polaroids.length; i++) {
+        const capEl = document.getElementById(`edit-caption-${i}`);
+        if (capEl) SIBLING_DATA.polaroids[i].caption = capEl.value;
+      }
+      for (let i = 0; i < 4; i++) {
+        SIBLING_DATA.timeline[i].badge = document.getElementById(`edit-time-badge-${i}`).value;
+        SIBLING_DATA.timeline[i].title = document.getElementById(`edit-time-title-${i}`).value;
+        SIBLING_DATA.timeline[i].desc = document.getElementById(`edit-time-desc-${i}`).value;
+      }
+
+      // Persist to local storage
+      localStorage.setItem("rakhi_gift_data_2026", JSON.stringify(SIBLING_DATA));
+      
+      // Update webpage rendering
+      renderPageData();
+      initCountdown();
+      determineActiveState();
+      
+      playSoundEffect('success');
+      editorModalContainer.classList.remove("visible");
+    });
+
+    // Helper to convert image path to base64 data URL
+    function convertImgToBase64(src) {
+      return new Promise((resolve) => {
+        // If already base64, return directly
+        if (!src || src.startsWith("data:")) {
+          resolve(src);
+          return;
+        }
+        
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = src;
+        img.onload = () => {
+          try {
+            const canvas = document.createElement("canvas");
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            resolve(canvas.toDataURL("image/jpeg", 0.85));
+          } catch (e) {
+            console.warn("Failed to convert image via canvas: " + src, e);
+            resolve(src); // fallback
+          }
+        };
+        img.onerror = () => {
+          console.warn("Failed to load image for base64 conversion: " + src);
+          resolve(src); // fallback
+        };
+      });
+    }
+
+    // Download custom modified HTML webpage
+    editorDownloadBtn.addEventListener("click", async () => {
+      const originalText = editorDownloadBtn.textContent;
+      editorDownloadBtn.textContent = "Packing images... ⏳";
+      editorDownloadBtn.disabled = true;
+
+      try {
+        // Deep copy sibling data to avoid modifying current runtime data directly
+        const exportData = JSON.parse(JSON.stringify(SIBLING_DATA));
+
+        // Convert portrait image
+        if (exportData.portraitImgData) {
+          exportData.portraitImgData = await convertImgToBase64(exportData.portraitImgData);
+        }
+
+        // Convert polaroids
+        for (let i = 0; i < exportData.polaroids.length; i++) {
+          if (exportData.polaroids[i].imgData) {
+            exportData.polaroids[i].imgData = await convertImgToBase64(exportData.polaroids[i].imgData);
+          }
+        }
+
+        // Stringify updated config data
+        const finalConfigString = `\n    SIBLING_DATA = ${JSON.stringify(exportData, null, 2)};\n`;
+        
+        // Read current source document
+        let pageHtml = document.documentElement.outerHTML;
+
+        // Replace the default SIBLING_DATA initialization with the modified one
+        const injectAnchor = '/*%INJECTED_CONFIG%*/';
+        pageHtml = pageHtml.replace(injectAnchor, finalConfigString);
+
+        // Create blob of modified HTML code
+        const blob = new Blob(["<!DOCTYPE html>\n" + pageHtml], { type: "text/html" });
+        const dlLink = document.createElement("a");
+        dlLink.href = URL.createObjectURL(blob);
+        dlLink.download = `raksha_bandhan_${exportData.sisterName.toLowerCase().replace(/\s+/g, '_')}.html`;
+        document.body.appendChild(dlLink);
+        dlLink.click();
+        document.body.removeChild(dlLink);
+        playSoundEffect('success');
+      } catch (e) {
+        console.error("Failed to generate offline bundle", e);
+        alert("Aww, there was an issue exporting! Please save first and try again.");
+      } finally {
+        editorDownloadBtn.textContent = originalText;
+        editorDownloadBtn.disabled = false;
+      }
+    });
+
+    // ----------------------------------------------------
+    // INITIALIZATION ON LOAD
+    // ----------------------------------------------------
+    renderPageData();
+    determineActiveState();
+    initCountdown();
+
+    // ====================================================
+    // LOADING SCREEN
+    // ====================================================
+    const loadingScreen = document.getElementById('loading-screen');
+    window.addEventListener('load', () => {
+      // Start background particles immediately for the countdown screen
+      initParticles();
+      animateParticles();
+
+      setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        
+        // Trigger staggered entry animation for opening page elements
+        const loginScreenEl = document.getElementById('login-screen');
+        if (loginScreenEl) {
+          loginScreenEl.classList.add('entrance-active');
+        }
+
+        setTimeout(() => { 
+          loadingScreen.style.display = 'none'; 
+        }, 900);
+      }, 1200);
+    });
+
+    // ====================================================
+    // TYPING ANIMATION
+    // ====================================================
+    function startTypingAnimation(targetId, text, speed = 90) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      el.textContent = '';
+      let i = 0;
+      const cursor = document.querySelector('.typing-cursor');
+      if (cursor) cursor.style.display = 'inline-block';
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          el.textContent += text[i];
+          i++;
+        } else {
+          clearInterval(interval);
+          // Remove blinking cursor after typing done (keep it a bit)
+          setTimeout(() => {
+            if (cursor) cursor.style.display = 'none';
+          }, 2500);
+        }
+      }, speed);
+    }
+
+    // Start typing animation after login reveal
+    const origExecuteGiftReveal = executeGiftReveal;
+    // Override to also trigger typing
+    const _origReveal = executeGiftReveal;
+    setTimeout(() => {
+      // Typing happens once main content visible
+      const observer2 = new MutationObserver((mutations) => {
+        mutations.forEach(m => {
+          if (m.target.classList.contains('visible')) {
+            startTypingAnimation('view-sister-name', SIBLING_DATA.sisterName || 'Peru Didi', 85);
+            observer2.disconnect();
+          }
+        });
+      });
+      const mc = document.getElementById('main-content-area');
+      if (mc) observer2.observe(mc, { attributes: true, attributeFilter: ['class'] });
+      // If already visible (bypass mode)
+      if (mc && mc.classList.contains('visible')) {
+        startTypingAnimation('view-sister-name', SIBLING_DATA.sisterName || 'Peru Didi', 85);
+      }
+    }, 300);
+
+    // ====================================================
+    // CONFETTI SYSTEM
+    // ====================================================
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const confettiCtx = confettiCanvas.getContext('2d');
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+    window.addEventListener('resize', () => {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    });
+
+    let confettiPieces = [];
+    let confettiRunning = false;
+
+    class ConfettiPiece {
+      constructor() {
+        this.x = Math.random() * confettiCanvas.width;
+        this.y = -20;
+        this.w = Math.random() * 12 + 6;
+        this.h = Math.random() * 6 + 3;
+        this.color = ['#f43f5e','#ec4899','#f59e0b','#fbbf24','#a78bfa','#34d399','#60a5fa'][Math.floor(Math.random()*7)];
+        this.vx = Math.random() * 4 - 2;
+        this.vy = Math.random() * 3 + 2;
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = Math.random() * 6 - 3;
+        this.opacity = 1;
+      }
+      update() {
+        this.x += this.vx + Math.sin(this.y / 40) * 0.5;
+        this.y += this.vy;
+        this.rotation += this.rotSpeed;
+        if (this.y > confettiCanvas.height - 40) this.opacity -= 0.04;
+      }
+      draw() {
+        confettiCtx.save();
+        confettiCtx.globalAlpha = Math.max(0, this.opacity);
+        confettiCtx.translate(this.x, this.y);
+        confettiCtx.rotate(this.rotation * Math.PI / 180);
+        confettiCtx.fillStyle = this.color;
+        confettiCtx.fillRect(-this.w/2, -this.h/2, this.w, this.h);
+        confettiCtx.restore();
+      }
+    }
+
+    function launchConfetti(duration = 3000) {
+      const endTime = Date.now() + duration;
+      confettiRunning = true;
+      // Spawn pieces over time
+      const spawnInterval = setInterval(() => {
+        if (Date.now() > endTime) { clearInterval(spawnInterval); return; }
+        for (let i = 0; i < 8; i++) confettiPieces.push(new ConfettiPiece());
+      }, 80);
+
+      function animateConfetti() {
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        confettiPieces = confettiPieces.filter(p => p.opacity > 0 && p.y < confettiCanvas.height + 20);
+        confettiPieces.forEach(p => { p.update(); p.draw(); });
+        if (confettiPieces.length > 0) {
+          requestAnimationFrame(animateConfetti);
+        } else {
+          confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+          confettiRunning = false;
+        }
+      }
+      animateConfetti();
+    }
+
+    // Hook confetti into gift box reveal
+    const origGiftBoxClick = interactiveGiftBox.onclick;
+    interactiveGiftBox.addEventListener('click', () => {
+      launchConfetti(4000);
+    }, true);
+
+    // ====================================================
+    // LIGHTBOX PHOTO VIEWER
+    // ====================================================
+    const lightboxOverlay = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    let lightboxIndex = 0;
+    let lightboxPhotos = [];
+
+    function openLightbox(index) {
+      lightboxPhotos = SIBLING_DATA.polaroids.filter(p => p.imgData);
+      if (!lightboxPhotos.length) return;
+      lightboxIndex = index % lightboxPhotos.length;
+      updateLightbox();
+      lightboxOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateLightbox() {
+      const photo = lightboxPhotos[lightboxIndex];
+      lightboxImg.src = photo.imgData;
+      lightboxCaption.textContent = photo.caption;
+      lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxPhotos.length}`;
+    }
+
+    lightboxClose.addEventListener('click', () => {
+      lightboxOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    lightboxPrev.addEventListener('click', () => {
+      lightboxIndex = (lightboxIndex - 1 + lightboxPhotos.length) % lightboxPhotos.length;
+      updateLightbox();
+    });
+    lightboxNext.addEventListener('click', () => {
+      lightboxIndex = (lightboxIndex + 1) % lightboxPhotos.length;
+      updateLightbox();
+    });
+    lightboxOverlay.addEventListener('click', (e) => {
+      if (e.target === lightboxOverlay) {
+        lightboxOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightboxOverlay.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') { lightboxIndex = (lightboxIndex - 1 + lightboxPhotos.length) % lightboxPhotos.length; updateLightbox(); }
+      if (e.key === 'ArrowRight') { lightboxIndex = (lightboxIndex + 1) % lightboxPhotos.length; updateLightbox(); }
+      if (e.key === 'Escape') { lightboxOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+    });
+
+    // Override polaroid card click to open lightbox instead of uploader
+    // (openPhotoUploader now opens lightbox for non-edit mode)
+    function openLightboxFromGrid(index) {
+      const all = SIBLING_DATA.polaroids;
+      const filtered = SIBLING_DATA.polaroids.filter(p => p.imgData);
+      const clickedItem = all[index];
+      const lightboxIdx = filtered.findIndex(p => p.imgData === clickedItem.imgData);
+      if (lightboxIdx >= 0) {
+        openLightbox(lightboxIdx);
+      }
+    }
+
+    // ====================================================
+    // SCROLL REVEAL OBSERVER
+    // ====================================================
+    const scrollRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          scrollRevealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+    function initScrollReveal() {
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        scrollRevealObserver.observe(el);
+      });
+    }
+
+    // Re-run after content loads
+    setTimeout(initScrollReveal, 1500);
+    document.getElementById('main-content-area').addEventListener('transitionend', initScrollReveal, { once: true });
+
+    // ====================================================
+    // POLAROID 3D TILT EFFECT
+    // ====================================================
+    document.addEventListener('mousemove', (e) => {
+      const cards = document.querySelectorAll('.polaroid-card');
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCX = rect.left + rect.width / 2;
+        const cardCY = rect.top + rect.height / 2;
+        const dx = e.clientX - cardCX;
+        const dy = e.clientY - cardCY;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 200) {
+          const rx = (dy / rect.height) * 15;
+          const ry = -(dx / rect.width) * 15;
+          card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.06) translateY(-8px)`;
+          card.style.zIndex = '15';
+          card.style.boxShadow = `0 25px 50px rgba(219,39,119,0.2)`;
+        } else {
+          card.style.transform = '';
+          card.style.zIndex = '';
+          card.style.boxShadow = '';
+        }
+      });
+    });
+
+    // ====================================================
+    // DARK MODE TOGGLE
+    // ====================================================
+    const darkToggleBtn = document.getElementById('dark-toggle-btn');
+    let isDarkMode = localStorage.getItem('rakhi_dark_mode') === 'true';
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      darkToggleBtn.textContent = '☀️';
+    }
+    darkToggleBtn.addEventListener('click', () => {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      darkToggleBtn.textContent = isDarkMode ? '☀️' : '🌙';
+      localStorage.setItem('rakhi_dark_mode', isDarkMode);
+    });
+
+    // ====================================================
+    // SHARE BUTTON
+    // ====================================================
+    const shareBtn = document.getElementById('share-btn');
+    const shareToast = document.getElementById('share-toast');
+    shareBtn.addEventListener('click', async () => {
+      const url = window.location.href;
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: '🎁 Happy Raksha Bandhan Peru Didi!', url });
+        } else {
+          await navigator.clipboard.writeText(url);
+          shareToast.classList.add('show');
+          setTimeout(() => shareToast.classList.remove('show'), 2500);
+        }
+      } catch (e) {
+        // Fallback
+        shareToast.textContent = '📋 ' + url;
+        shareToast.classList.add('show');
+        setTimeout(() => shareToast.classList.remove('show'), 3000);
+      }
+      spawnSparks(shareBtn.getBoundingClientRect().left, shareBtn.getBoundingClientRect().top, 10);
+    });
+
+    // ====================================================
+    // CELEBRATION BANNER (Rakhi Day Detection)
+    // ====================================================
+    function checkRakhiDay() {
+      const today = new Date();
+      const target = new Date(SIBLING_DATA.countdownTarget + 'T00:00:00');
+      const todayDate = today.toDateString();
+      const targetDate = target.toDateString();
+      if (todayDate === targetDate) {
+        const alreadyShown = sessionStorage.getItem('celeb_shown');
+        if (!alreadyShown) {
+          setTimeout(() => {
+            document.getElementById('celebration-banner').classList.add('active');
+            launchConfetti(6000);
+            sessionStorage.setItem('celeb_shown', 'true');
+          }, 2000);
+        }
+      }
+    }
+    setTimeout(checkRakhiDay, 3000);
+
+  </script>
+</body>
+</html>
