@@ -361,6 +361,7 @@
       font-family: var(--font-script);
       background: linear-gradient(45deg, var(--pink-accent), var(--purple-accent));
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       position: relative;
       display: inline-block;
@@ -791,6 +792,7 @@
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 5;
+      line-clamp: 5;
       -webkit-box-orient: vertical;
     }
 
@@ -1188,6 +1190,7 @@
       font-size: 2.4rem;
       background: linear-gradient(45deg, #db2777, #7c3aed);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 20px;
       font-weight: 700;
@@ -1499,6 +1502,7 @@
       padding: 1px;
       background: linear-gradient(to bottom right, rgba(212,175,55,0.4), rgba(219,39,119,0.2), rgba(255,255,255,0.1));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
@@ -1615,6 +1619,7 @@
       margin-bottom: 12px;
       background: linear-gradient(45deg, #fff, var(--pink-soft));
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -2295,6 +2300,7 @@
     body.dark-mode .closing-wishes {
       background: linear-gradient(45deg, var(--pink-accent), var(--purple-accent));
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     body.dark-mode .closing-text {
